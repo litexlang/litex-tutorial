@@ -1,74 +1,73 @@
-# function and function_template
+# Function
 
-Todo
+Same as the definition in math, Function means how a varying quantity depends on another quantity.  
 
-引入概念
+## Define a Function
 
-fn fnName(param paramSet pair) retSet:
-    $domFact1(param) # x > 0
-    $domFact2(param) # y < 0
-    then:
-        $propertyOfFnName(..)
-        $propertyOfFnName(...)
+You can define a Function `square_root`(for all `x` in `R`, if `x` >= 0, then there is some special value in `R` make `square_root(x) * square_root(x)` euqals `x`):
 
-fn f(x, y R) R:
-    x > 0
-    y < 1
-    y % 2 = 0
-    then:
-        f(x, y ) = 1
-
-fn_template template_of_f(x, y R) R:
-    x > 0
-    y < 1
-    y % 2 = 0
-    then:
-        f(x, y ) = 1
-
-f $in template_of_f
-
-fn f(x, y R) R:
+```litex
+fn square_root(x R) R:
     dom:
-        ...
+        x >= 0
     then:
-        ...
+        square_root(x) * square_root(x) = x
+```
 
-fn_template temp(x,y R) R:
-    f(x,y R)
+- `fn` is the reserved word of Function. 
+- `square_root` is the name of this Function. 
+- String in parentheses, `x R`, are Objects (and the set they're in) which will be used in this Function. 
+- The last word, `R`, in the first line means the *codomain* of this Function.
+- `dom` is the additional restrictions for those Objects, which is the *domain* of this Function.
+- `then` means the part *then* in a Function. So you should write the dependency after *then* in `then`.
 
-fn_tempalate XXX(x, y R) R:
+To make definition lines less, you could hide some reserved word for some situation. For example, you could hide `dom` when you write Proposition `square_root`:
+
+```litex
+fn square_root(x R) R:
+    x >= 0
+    then:
+        square_root(x) * square_root(x) = x
+```
+
+If you claim `x` in `N` in the first line, there is no `dom` anymore. Then, you could hide `then`. Function `square_root` could also be writen like:
+
+```litex
+fn square_root(x N) R:
+    square_root(x) * square_root(x) = x
+```
+
+For this definition, codomain of Function is still `R`, but domain of Function is `N` because there is no `dom`.
+
+Just like the feature of Proposition, you can define a Function without `then` but only a name like the following line, which means a Function with domain and codomain but no dependency:
+
+```litex
+fn function(x N) R
+```
+
+Of course, you can define a Function with only additional restrictions like the following lines, which express the similar meaning like the above line:
+
+```litex
+fn function(x R) R
     dom:
         x > 0
-        y < 1
-        y % 2 = 0
+```
+
+<!-- TODO in which situation, user would use this format -->
+
+> Note: If there is only dom in your Function, you can't hide `dom` anymore. Or Litex would misunderstand your lines with the situation that Function with `then` only.
+
+## Call a Function
+
+Not like the way we call a Proposition, you could call Function anywhere directly after defining a Function:
+
+```litex
+fn square_root(x R) R:
+    x >= 0
     then:
-        f(x,y) = 1
-        f(x,y) $in R
+        square_root(x) * square_root(x) = x
 
-f $in XXX
+square_root(4) $in R
+```
 
-fn_template seq(params):
-    fn (x N) retParam:
-        dom:
-            ...
-        then:
-            ...
-
-let a seq(R)
-fn a(x N) R
-
-prop is_group(s set, id s, plus fn(s,s)s, reverse fn(s)s)
-
-let f fn(s,s)s
-
-fn f(s,s)s
-
-fn_template matrix(line, column N_pos, s set):
-    fn (x, y N) s:
-        x < line
-        y < column
-
-2 * 2 matrix, with values in R
-
-let m matrix(2,2,R):
-    m(0,0)
+> Note: Litex is a formal language **to PROVE** instead of to compute, so `square_root(4)` here is not equal 2. `square_root(4)` here means there is a value in `R` that makes `square_root(x) * square_root(x) = x` and we don't care which number is the value.
