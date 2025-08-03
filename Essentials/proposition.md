@@ -18,7 +18,11 @@ prop form_triangles(x, y, z R):
         y + z > x
 ```
 
-`prop` is the reserved word of Proposition. `form_triangles` is the name of this Proposition. String in parentheses are Objects (and the set they're in) which will be used in this Proposition. `dom` is the additional restrictions for those Objects. `iff` means the part *if and only if* in a Proposition. So you should write the logic after *if and only if* in `iff`.
+- `prop` is the reserved word of Proposition. 
+- `form_triangles` is the name of this Proposition. 
+- String in parentheses, `x, y, z R`, are Objects (and the set they're in) which will be used in this Proposition. 
+- `dom` is the additional restrictions for those Objects. 
+- `iff` means the part *if and only if* in a Proposition. So you should write the logic after *if and only if* in `iff`.
 
 To make claim lines less, you could hide some reserved word for some situation. For example, you could hide `dom` when you write Proposition `form_triangles`:
 
@@ -42,11 +46,23 @@ prop form_triangles(x, y, z N_pos):
     y + z > x
 ```
 
-Also, you can claim a Proposition without any logic but only a name like the following line, which means `x`, `y`, `z` in `R` is able to form triangles in any situation. Obviously, this proposition is false with the knowledge we have. But you can still claim it anyway.
+Also, you can claim a Proposition without any logic but only a name like the following line, which means `x`, `y`, `z` in `N_pos` is able to form triangles in any situation. Obviously, this proposition is false with the knowledge we have. But you can still claim it anyway.
+
+```litex
+prop form_triangles(x, y, z N_pos)
+```
+
+Absolutly, you can claim a Proposition with only additional restrictions and no logic like the following lines, which express the similar meaning like the above line:
 
 ```litex
 prop form_triangles(x, y, z R)
+    dom:
+        x > 0
+        y > 0
+        z > 0
 ```
+
+> Note: If there is only dom in your Proposition, you can't hide `dom` anymore. Or Litex would misunderstand your lines with the situation that Proposition with `iff` only.
 
 ## Call a Proposition
 

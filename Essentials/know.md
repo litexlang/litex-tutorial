@@ -5,10 +5,10 @@ Sometimes, we hope to claim some knowledge is correct by default. We could use `
 On Proposition chapter, we claimed an empty Proposition `form_triangles`, which is obviously false. But here we could claim it true by `know`:
 
 ```litex
-prop form_triangles(x, y, z R)
+prop form_triangles(x, y, z N_pos)
 
 know:
-    forall n, m, l R:
+    forall n, m, l N_pos:
         $form_triangles(n, m, l)
 
 $form_triangles(1, 2, 3)
