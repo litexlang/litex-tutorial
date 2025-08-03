@@ -15,12 +15,16 @@ Also, you could claim Objects in one line:
 ```litex
 # claim Objects n, m in N
 let n, m N
+```
 
+```litex
 # claim Objects n, m in N and z in Z
 let n, m N, z Z
+```
 
+```litex
 # claim empty set s and Object n in s
 let s set, n s
 ```
 
-> Note: you can't change the claim order in last line. `s` must be claimed first because `n` cannot be claimed before Litex know what is `s`
+> Note: you can't change the claim order in last example. `s` must be claimed first because `n` cannot be claimed before Litex know what is `s`
