@@ -60,7 +60,7 @@ $form_triangles(3, 4, 5)
 If there is only two Objects in parentheses of Proposition claim, you could also call it like:
 
 ```litex
-prop divisible_by(n R, m R):
+prop divisible_by(n, m R):
     m != 0
     iff:
         n % m = 0
