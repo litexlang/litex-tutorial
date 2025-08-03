@@ -1,5 +1,7 @@
 # Proposition
 
+Same as the definition in math, Proposition is a sentence that is either true or false, but not both.
+
 ## Claim a Proposition
 
 You can claim a Proposition `form_triangles`(`x`, `y`, `z` in `R` is able to form triangles if and only if the sum of any two is greater than the third one):
@@ -38,6 +40,12 @@ prop form_triangles(x, y, z N_pos):
     x + y > z
     x + z > y
     y + z > x
+```
+
+Also, you can claim a Proposition without any logic but only a name like the following line, which means `x`, `y`, `z` in `R` is able to form triangles in any situation. Obviously, this proposition is false. But you can still claim it anyway.
+
+```litex
+prop form_triangles(x, y, z R)
 ```
 
 ## Call a Proposition
