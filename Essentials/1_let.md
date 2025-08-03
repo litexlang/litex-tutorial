@@ -17,6 +17,8 @@ Also, you could claim Objects in one line:
 let n, m N
 ```
 
+> Note: Above line is same as the line `let n N, m N`. Here is a syntactic sugar for you.
+
 ```litex
 # claim Objects n, m in N and z in Z
 let n, m N, z Z
@@ -27,4 +29,4 @@ let n, m N, z Z
 let s set, n s
 ```
 
-> Note: you can't change the claim order in last example. `s` must be claimed first because `n` cannot be claimed before Litex know what is `s`
+> Note: You can't change the claim order in last example. `s` must be claimed first because `n` cannot be claimed before Litex know what is `s`
