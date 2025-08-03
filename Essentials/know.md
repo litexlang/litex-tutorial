@@ -2,7 +2,7 @@
 
 Sometimes, we hope to claim some knowledge is correct by default. We could use `know` to claim it.
 
-On Proposition chapter, we claimed a empty Proposition `form_triangles`, which is obviously false. But here we could claim it true by `know`:
+On Proposition chapter, we claimed an empty Proposition `form_triangles`, which is obviously false. But here we could claim it true by `know`:
 
 ```litex
 prop form_triangles(x, y, z R)
