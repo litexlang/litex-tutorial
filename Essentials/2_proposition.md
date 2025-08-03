@@ -42,7 +42,7 @@ prop form_triangles(x, y, z N_pos):
     y + z > x
 ```
 
-Also, you can claim a Proposition without any logic but only a name like the following line, which means `x`, `y`, `z` in `R` is able to form triangles in any situation. Obviously, this proposition is false. But you can still claim it anyway.
+Also, you can claim a Proposition without any logic but only a name like the following line, which means `x`, `y`, `z` in `R` is able to form triangles in any situation. Obviously, this proposition is false with the knowledge we have. But you can still claim it anyway.
 
 ```litex
 prop form_triangles(x, y, z R)
