@@ -1,7 +1,7 @@
 # Litex: Scale Formal Reasoning in AI Age
 
-**Release v0.1.6-beta (not yet ready for production use)**  
-*Jiachen Shen and The Litex Team*
+**Release v0.1.7-beta (not yet ready for production use)**  
+_Jiachen Shen and The Litex Team_
 **Try Litex on [playground](https://litexlang.org/playground).**
 
 [![Github](https://img.shields.io/badge/Github-grey?logo=github)](https://github.com/litexlang/golitex)
@@ -38,94 +38,25 @@ Math is about deriving new facts from established ones. Verification is about ma
 
 2. From general case to special case. e.g. `forall x Human: $intelligent(x)` => `$intelligent(Jordan)`. The derived fact `intelligent(Jordan)` is true because by substituting `x` with `Jordan`, the first statement is true, and the second statement is written exactly the same as the first statement after substitution. I call it `match and substitution`.
 
-The key insight behind Litex's extreme simplicity is: mathematical verification is nothing but a fancy form of **match and substitution** problem, similar to "ctrl+f and ctrl+r (or cmd+f and cmd+r)" in your browser. When doing verification, you find an established fact, match it with the new statement, substitute the variables in the established fact with the new statement, and check if the new statement is equal to the substituted established fact. If they are equal, the new statement is verified. 
+The key insight behind Litex's extreme simplicity is: mathematical verification is nothing but a fancy form of **match and substitution** problem, similar to "ctrl+f and ctrl+r (or cmd+f and cmd+r)" in your browser. When doing verification, you find an established fact, match it with the new statement, substitute the variables in the established fact with the new statement, and check if the new statement is equal to the substituted established fact. If they are equal, the new statement is verified.
 
 To ignite the process of deriving new facts from established ones, we need some established facts which are by default true. The fundamentals of modern mathematics i.e. axioms of set theory, are built-in in Litex.
 
 Currently, the bottleneck in this field is that formal languages are too difficult for both humans and AI, resulting in scarce and expensive training data. However, Litex, with its simplicity and close alignment with mathematical syntax and semantics, reduces the cost and barrier of dataset construction by an order of magnitude.
 
-## Installing and updating
-
-To install or update Litex core, you could run the following commands for different systems.
-
-For macOS user with Homebrew:
-
-```bash
-# install
-brew install litexlang/tap/litex
-
-# update
-brew update && brew upgrade
-
-# run litex in your terminal
-litex
-```
-
-For Ubuntu user with wget command:
-
-amd64 architecture install or update:
-```bash
-# install or update
-wget https://github.com/litexlang/golitex/releases/download/latest/litex_0.1.6-beta_amd64.deb
-sudo dpkg -i litex_0.1.6-beta_amd64.deb
-
-# run litex in your terminal
-litex
-```
-
-arm64 architecture install or update:
-```bash
-# install or update
-wget https://github.com/litexlang/golitex/releases/download/latest/litex_0.1.6-beta_arm64.deb
-sudo dpkg -i litex_0.1.6-beta_arm64.deb
-
-# run litex in your terminal
-litex
-```
-
-For Ubuntu user with curl command:
-
-amd64 architecture install or update:
-```bash
-# install or update
-curl -O https://github.com/litexlang/golitex/releases/download/latest/litex_0.1.6-beta_amd64.deb
-sudo dpkg -i litex_0.1.6-beta_amd64.deb
-
-# run litex in your terminal
-litex
-```
-
-arm64 architecture install or update:
-```bash
-# install or update
-curl -O https://github.com/litexlang/golitex/releases/download/latest/litex_0.1.6-beta_arm64.deb
-sudo dpkg -i litex_0.1.6-beta_arm64.deb
-
-# run litex in your terminal
-litex
-```
-
-For windows user:
-
-```bash
-pending...
-```
-
-After installing, your could run `litex -version` to see if it was installed. And enjoy it via command `litex`.
-
 ## Difference between Litex and Python and Lean
 
 Litex is very intuitive, which is very rare for a formal language. Traditional formal languages like Lean, Coq, because they are still programming languages, just like Python and C. There are huge gaps between programming and verification. Serving both purpose of computation and verification is technically challenging, which makes them much more complex than Litex. The following table might give you a sense of the gap.
 
-| Feature              | Mathematics                                                                 | Programming                                                                    |
-|----------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| **Variable**          | No real "variable" — once an object is defined, its meaning is fixed        | Variables can change values during execution                                   |
-| **Function**          | A symbol that builds new expressions from input symbols (no execution)      | A block of executable code that performs computation or side effects           |
-| **Execution**         | No execution — everything is symbolic manipulation or `match and substitution`           | Involves actual computation steps and runtime behavior                         |
-| **Control Flow**      | Uses logical constructs like `∀` (for all) to reason about all cases         | Uses constructs like `for`, `while`, `if` to control the flow of execution     |
-| **Iteration**         | Infinite or large domains handled abstractly (e.g. by induction or logic)    | Requires explicit loops and step-by-step computation                           |
-| **Existential Quantification** |  Existential quantification is a fundamental part of math | No existential quantification — all objects are explicitly defined |
-| **Purpose**           | To prove or verify truth symbolically                                        | To perform tasks, process data, interact with systems                          |
+| Feature                        | Mathematics                                                                    | Programming                                                                |
+| ------------------------------ | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| **Variable**                   | No real "variable" — once an object is defined, its meaning is fixed           | Variables can change values during execution                               |
+| **Function**                   | A symbol that builds new expressions from input symbols (no execution)         | A block of executable code that performs computation or side effects       |
+| **Execution**                  | No execution — everything is symbolic manipulation or `match and substitution` | Involves actual computation steps and runtime behavior                     |
+| **Control Flow**               | Uses logical constructs like `∀` (for all) to reason about all cases           | Uses constructs like `for`, `while`, `if` to control the flow of execution |
+| **Iteration**                  | Infinite or large domains handled abstractly (e.g. by induction or logic)      | Requires explicit loops and step-by-step computation                       |
+| **Existential Quantification** | Existential quantification is a fundamental part of math                       | No existential quantification — all objects are explicitly defined         |
+| **Purpose**                    | To prove or verify truth symbolically                                          | To perform tasks, process data, interact with systems                      |
 
 Litex, as a domain language, takes advantage of the difference between programming and verification, and is designed to be a simple and intuitive reasoning verifier. Technically, Litex is a "Read-Only Turing Machine". It does not have variables, execution, control flow, iteration, etc. The fundamental difference between programming and verification is verification never changes what has been established (i.e. what has been proved to be true is always true), but when programming we are always updating values of variables. Traditional formal languages sort of robbed you of the joy of exploring mathematics by forcing you to spend most of your time wrestling with the formal language itself. Litex brings that joy back! [^1][^2]
 
@@ -134,12 +65,11 @@ Math serves two purposes: 1. for computation, i.e. calculate the output of a fun
 This README shows how the deep understanding of both the nature of mathematics and the nature of programming shapes the unique design of Litex. Let's start with a simple example.
 
 [^1]: The Litex kernel is much larger than Lean's kernel. There are two reasons for that. First, there are multiple ways to build the foundations of mathematics. Litex uses set theory, while Lean uses type theory. Although the two are logically equivalent, type theory is more abstract. This abstraction helps keep the Lean kernel small, but also makes it harder for users to understand. Since most people are introduced to set theory in high school, it is not ideal to use type theory as the foundation if the goal is to make a formal language widely accessible. Second, Lean is a programming language. Because it is Turing-complete, Lean shifts the responsibility of implementing low-level logic to the user. This means that users must essentially build parts of the system themselves before they can even begin verifying their own statements — and there's no guarantee that their implementation is correct. In contrast, Litex handles low-level logic within the kernel itself. This allows users to focus entirely on expressing and verifying their ideas, and it makes Litex both easier to use and computationally more efficient than most other formal languages. Every design choice in Litex is made with user-friendliness as the top priority. Litex is focused solely on verification, which dramatically simplifies the user experience. For example, the Litex kernel automatically searches for established facts, so users don’t need to name them or remember which ones they’re using. In Lean or Coq, this kind of support doesn’t exist — the user must essentially reimplement a Litex-like kernel by hand before verification can even begin. This burden should not fall on the user.
-
-[^2]: Litex has a symbolic view of math. The process of  `match and substitution` cares about what a symbol is, not what a symbol means.
+[^2]: Litex has a symbolic view of math. The process of `match and substitution` cares about what a symbol is, not what a symbol means.
 
 ---
 
-- **Website:** [litexlang.org](https://litexlang.org)  
+- **Website:** [litexlang.org](https://litexlang.org)
 - **GitHub:** [github.com/litexlang/golitex](https://github.com/litexlang/golitex)
 - **Project Email:** litexlang@outlook.com
 - **Litex Creator:** Jiachen Shen
@@ -232,13 +162,9 @@ Math is about deriving new facts from established ones. Verification is about ma
 You just learned how Litex builds math from basic pieces, like building blocks. To sum up, `match and substitution` is the basic way of deriving new facts from established ones. We can construct the whole math system by this way in Lite as long as basic arithmetic and counting are built-in. [^3][^4][^5][^6][^7]
 
 [^3]: There are exceptions. Facts about symbols with literal information (e.g. numbers like 1, 2, 3, counting etc) are not verified in this way. Facts related to counting are not verified in this way. There are and only these two exceptions. Those facts are verified by Litex's builtin rules, the user does not need to worry about them.
-
 [^4]: Voltaire once said: "Common sense is not so common." In the case of Litex, Litex makes the process of building math as easy as `ctrl+f & ctrl+r /cmd+f & cmd+r` in your browser, by discovering that math is nothing but a special kind of `match and substitution` problem. Everyone is so familiar with this process, but almost no one actually finds its significance and use this idea to create a simple formal language. The real magic of Litex is that it works just like how people think in daily life. This is a hard magic for the language designer, because it requires a deep understanding of both the nature of mathematics and the nature of programming, but is worth the effort.
-
 [^5]: In naive set theory, where almost all daily math is based on, all facts are derived by `match and substitution` using first-order logic, with only two exceptions: 1. mathematical induction. 2. the axiom of replacement. Those two are builtin in Litex. Since high-order logic is "passing proposition as parameter to another proposition", facts about high-order logic are still verified by `match and substitution`. Litex will implement high-order logic in the future. If you are still worried about whether Litex is rigorous, the Litex kernel prints out how it verifies the statement, so you can see how it works.
-
 [^6]: Litex is a very simple language to learn. In fact, I am not sure whether I should use "learn" to describe it. Most of Litex language features are so common sense that we use it everyday to reason. I guess people can not "learn" what they have already known! A lot of people may think math is hard, but what Litex does is to make math as easy as `ctrl+f & ctrl+r /cmd+f & cmd+r` in your browser. Let more people find pleasure in the wonderful world of math!
-
 [^7]: Carful readers may worry the foundation of Litex is shaky, because `match and substitution` is not a very rigorous concept. They might think Type theory, where Lean is based on, is more solid. I disagree. First, the kernel of type system in Lean is just a huge piece of C++ code, doing `match and substitution`. Second, no matter what mathematical foundation a traditional formal language is based on (in the case of Lean, it is Type theory), it is still a programming language, which is no different from Python. The syntax style of Lean makes it sort of easier to write formal proofs, but it is still very very far from what we are truly thinking when we are doing math, because the semantics of Lean is still a programming language. All language designers agree it is the semantic that matters more, not the syntax. Litex has a semantics designed to be as close to the way we think in daily life as possible.
 
 ## Litex Keywords
@@ -249,43 +175,43 @@ _-- The Unix Philosophy_
 
 Litex is a simple language. I hope many of the keywords are already familiar to you.[^3]
 
-| Keyword | Meaning |
-|---------|---------|
-| `obj` | Define an object. Anything in Litex is an object. |
-| `prop` | Define a proposition. A factual statement must has its proposition name and its proposition objects. |
-| `know` | Establish a fact |
-| `forall` | Universal quantification |
-| `exist` | Existential quantification |
-| `have` | Introduce an object using an existential quantification |
-| `exist_prop` | Existential quantification with a proposition |
-| `iff` | Equivalence |
-| `then` | Implication |
-| `or` | Disjunction |
-| `not` | Negation |
-| `fn` | Define a function |
-| `fn_template` | Define a class of functions |
-| `set` | set |
-| `in` | membership of an object in a set |
-| `dom` | domain of a proposition, function, function template, etc. |
-| `enum` | enumeration |
-| `len`  | length of a set |
-| `finite_set` | a set with a finite number of elements |
-| `indexable_set` | a set with a countable number of elements |
-| `prove` | open a local environment to write some statements without affecting the global environment |
-| `claim` | claim a factual statement, prove it here |
-| `prove_by_contradiction` | prove by contradiction |
-| `prove_in_each_case` | prove by case analysis |
-| `prove_by_math_induction` | prove by mathematical induction |
-| `prove_over_finite_set` | prove a universal statement by iterating over a finite set |
-| `import` | import a file or directory |
-| `exist_in` | exist a object in a set |
-| `set_defined_by_replacement` | define a set by a axiom of replacement |
-| `obj_exist_as_preimage_of_prop` | exist a object as the preimage of a proposition |
-| `obj_exist_as_preimage_of_fn` | exist a object as the preimage of a function |
+| Keyword                         | Meaning                                                                                              |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `obj`                           | Define an object. Anything in Litex is an object.                                                    |
+| `prop`                          | Define a proposition. A factual statement must has its proposition name and its proposition objects. |
+| `know`                          | Establish a fact                                                                                     |
+| `forall`                        | Universal quantification                                                                             |
+| `exist`                         | Existential quantification                                                                           |
+| `have`                          | Introduce an object using an existential quantification                                              |
+| `exist_prop`                    | Existential quantification with a proposition                                                        |
+| `iff`                           | Equivalence                                                                                          |
+| `then`                          | Implication                                                                                          |
+| `or`                            | Disjunction                                                                                          |
+| `not`                           | Negation                                                                                             |
+| `fn`                            | Define a function                                                                                    |
+| `fn_template`                   | Define a class of functions                                                                          |
+| `set`                           | set                                                                                                  |
+| `in`                            | membership of an object in a set                                                                     |
+| `dom`                           | domain of a proposition, function, function template, etc.                                           |
+| `enum`                          | enumeration                                                                                          |
+| `len`                           | length of a set                                                                                      |
+| `finite_set`                    | a set with a finite number of elements                                                               |
+| `indexable_set`                 | a set with a countable number of elements                                                            |
+| `prove`                         | open a local environment to write some statements without affecting the global environment           |
+| `claim`                         | claim a factual statement, prove it here                                                             |
+| `prove_by_contradiction`        | prove by contradiction                                                                               |
+| `prove_in_each_case`            | prove by case analysis                                                                               |
+| `prove_by_math_induction`       | prove by mathematical induction                                                                      |
+| `prove_over_finite_set`         | prove a universal statement by iterating over a finite set                                           |
+| `import`                        | import a file or directory                                                                           |
+| `exist_in`                      | exist a object in a set                                                                              |
+| `set_defined_by_replacement`    | define a set by a axiom of replacement                                                               |
+| `obj_exist_as_preimage_of_prop` | exist a object as the preimage of a proposition                                                      |
+| `obj_exist_as_preimage_of_fn`   | exist a object as the preimage of a function                                                         |
 
 [^3]: Although these keywords are rarely defined strictly in math textbooks, they are used everyday and everywhere. Litex creator can not find strict definition for keywords like `proposition`, `is`, `in` etc (actually, the word `definition` is also a vague word). He tried his best to make the meaning of these keywords as close to the meaning in our daily math expression, along with his own ideas and understanding, so that Litex is both intuitive and strict.
 
-##  Examples: Litex for Curious Formal Language Users
+## Examples: Litex for Curious Formal Language Users
 
 _Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex._
 
@@ -355,7 +281,6 @@ I know Lean can use tactics to solve the same problem, and it is shorter. Litex 
 
 There is another way to write the same example in Litex, a bottom-up way.
 
-
 <table style="border-collapse: collapse; width: 100%; font-size: 12px">
   <tr>
     <th style="border: 2px solid black; padding: 4px; text-align: left; width: 40%;">Litex</th>
@@ -397,7 +322,6 @@ There is another way to write the same example in Litex, a bottom-up way.
     </td>
   </tr>
 </table>
-
 
 Next we prove `sqrt(2) is irrational`. Since the standard library is not yet implemented, we have to define the log function ourselves for now. Note that how easy it is to define a new concept in Litex. You do not have to start from a very low level concept and build up to a higher level concept. You can define a new concept directly.
 
@@ -602,7 +526,6 @@ To better show the power of `fn_template`, There is another example of defining 
   </tr>
 </table>
 
-
 ## Litex Introduction For Non-Technical Readers
 
 _We always overestimate the change that will occur in the next two years and underestimate the change that will occur in the next ten._
@@ -611,7 +534,7 @@ _-- Bill Gates_
 
 **Litex** is a simple and easy-to-learn formal language. Its design philosophy is to make the process of formal reasoning as intuitive and natural as writing in natural language. Thanks to its innovative syntax and semantic mechanisms, even ten-year-olds can quickly learn to use Litex for basic formal expression.
 
-Existing formal languages (such as Lean, Coq, Isabelle, etc.) are too complex and have steep learning curves, severely limiting their broader adoption and impact. In the foreseeable future, Litex aims to reduce the time cost ratio between *formalizing* a mathematical proof and *writing* it in natural language from the current \~10:1 to 1:1, dramatically improving the efficiency of structuring mathematical knowledge. 
+Existing formal languages (such as Lean, Coq, Isabelle, etc.) are too complex and have steep learning curves, severely limiting their broader adoption and impact. In the foreseeable future, Litex aims to reduce the time cost ratio between _formalizing_ a mathematical proof and _writing_ it in natural language from the current \~10:1 to 1:1, dramatically improving the efficiency of structuring mathematical knowledge.
 
 At its core, mathematics serves two key purposes: one is **computation**, i.e., deriving outputs from known inputs; the other is **reasoning and verification**, ensuring the correctness of new propositions based on existing knowledge. Computation has already been revolutionized by the software industry—from manual calculations to high-performance computing, from the Turing machine model to modern deep learning frameworks. In contrast, the domain of reasoning still largely relies on human experts expressing and checking arguments in natural language.
 
@@ -623,8 +546,7 @@ For the time being, The number of people who study and use math is 100-1000 time
 
 Litex isn’t just solving today’s problems—it’s opening the door to a new era in AI. As language models evolve, reasoning is emerging as the true measure of intelligence. Leading labs like DeepMind, OpenAI, and DeepSeek are already integrating formal languages into training to improve logical consistency. Meta’s \$15B investment in Scale AI shows the future of AI lies in data—especially structured, logic-rich data. Natural language alone falls short; to teach reasoning, we need formal languages. Just as Python became core to AI development, formal languages like Litex are poised to become vital infrastructure on the path to AGI.
 
-
-**Litex**, driven by minimalist design, balances readability, expressive power, and automation. It aspires to become the *standard intermediate language for AI reasoning systems*, while also supporting formal verification tasks across advanced manufacturing, crypto-currency, software engineering, and education. 
+**Litex**, driven by minimalist design, balances readability, expressive power, and automation. It aspires to become the _standard intermediate language for AI reasoning systems_, while also supporting formal verification tasks across advanced manufacturing, crypto-currency, software engineering, and education.
 
 **In one sentence**: Computation has been automated—reasoning should be too. Litex is making that a reality.
 
