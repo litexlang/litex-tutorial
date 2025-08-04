@@ -48,7 +48,7 @@ fn function(x N) R
 Of course, you can define a Function with only additional restrictions like the following lines, which express the similar meaning like the above line:
 
 ```litex
-fn function(x R) R
+fn function(x R) R:
     dom:
         x > 0
 ```

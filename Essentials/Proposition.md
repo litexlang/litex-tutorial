@@ -55,7 +55,7 @@ prop form_triangles(x, y, z N_pos)
 Absolutly, you can claim a Proposition with only additional restrictions and no logic like the following lines, which express the similar meaning like the above line:
 
 ```litex
-prop form_triangles(x, y, z R)
+prop form_triangles(x, y, z R):
     dom:
         x > 0
         y > 0
