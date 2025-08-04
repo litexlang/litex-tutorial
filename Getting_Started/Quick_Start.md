@@ -17,8 +17,8 @@ brew install litexlang/tap/litex
 For Ubuntu/Debian users, please paste following command to your terminal:
 
 ```bash
-wget https://github.com/litexlang/golitex/releases/download/v0.1.7-beta/litex_0.1.7-beta_amd64.deb
-sudo dpkg -i litex_0.1.7-beta_amd64.deb
+wget https://github.com/litexlang/golitex/releases/download/v0.1.8-beta/litex_0.1.8-beta_amd64.deb
+sudo dpkg -i litex_0.1.8-beta_amd64.deb
 ```
 
 ## Try Litex on your machine
