@@ -80,7 +80,7 @@ claim:
 
 ## Expressive
 
-Litex built in all common conceptions of math such as set, group instead of make conceptions implemented via computer language.
+Litex built in all common conceptions of math such as set, proposition and others instead of make conceptions implemented via computer language.
 
 Here is an example: to define a group, and prove R and Z are groups
 
