@@ -111,4 +111,4 @@ know forall m, n, l N_pos:
 $form_triangles(1, 2, 3)
 ```
 
-> Note: Remember to fill the Proposition later. Or your code would look specious.
+> Note: Remember to fill the Proposition later. Or your logic looks specious.
