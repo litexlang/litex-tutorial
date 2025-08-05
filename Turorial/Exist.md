@@ -1,7 +1,5 @@
 # Exist
 
-*Exist* is also a common conception.
-
 ## Claim a Exist Proposition
 
 You can claim an Exist Proposition `larger_than`(For all `y` in `R` and `y > 0`, there exists `x` in `R` such that `x > y`):
