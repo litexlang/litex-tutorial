@@ -4,7 +4,7 @@ Same as the definition in math, Proposition is a sentence that is either true or
 
 ## Claim a Proposition
 
-You can claim a Proposition `form_triangles`(`x`, `y`, `z` in `R` is able to form triangles if and only if the sum of any two is greater than the third one):
+You can claim a Proposition `form_triangles`(`x`, `y`, `z` in `R` and `x > 0`, `y > 0`, `z > 0` is able to form triangles if and only if the sum of any two is greater than the third one):
 
 ```litex
 prop form_triangles(x, y, z R):
@@ -18,13 +18,9 @@ prop form_triangles(x, y, z R):
         y + z > x
 ```
 
-- `prop` is the reserved word of Proposition. 
-- `form_triangles` is the name of this Proposition. 
-- String in parentheses, `x, y, z R`, are Objects (and the set they're in) which will be used in this Proposition. 
-- `dom` is the additional restrictions for those Objects. 
-- `iff` means the part *if and only if* in a Proposition. So you should write the logic after *if and only if* in `iff`.
+`prop` is the reserved word of Proposition. `dom` is the additional restrictions for those Objects. `iff` means the part *if and only if* in a Proposition. So you should write the logic after *if and only if* in `iff`.
 
-To make claim lines less, you could hide some reserved word for some situation. For example, you could hide `dom` when you write Proposition `form_triangles`:
+Just like you add additional restriction on `forall`, you use `dom`! And as it should be, `dom` here could be hidden here as well:
 
 ```litex
 prop form_triangles(x, y, z R):
@@ -37,7 +33,7 @@ prop form_triangles(x, y, z R):
         y + z > x
 ```
 
-If you claim `x`, `y`, `z` in `N_pos` (the set of positive natural numbers) in the first line, there is no `dom` anymore. Then, you could hide `iff`. Proposition `form_triangles` could also be writen like:
+You should have thought of it as well, If you claim `x`, `y`, `z` in `N_pos`, you could hide the `then` because there is no `dom`:
 
 ```litex
 prop form_triangles(x, y, z N_pos):
@@ -45,6 +41,8 @@ prop form_triangles(x, y, z N_pos):
     x + z > y
     y + z > x
 ```
+
+## Claim an empty Proposition
 
 Also, you can claim a Proposition without any logic but only a name like the following line, which means `x`, `y`, `z` in `N_pos` is able to form triangles in any situation. Obviously, this proposition is false with the knowledge we have. But you can still claim it anyway.
 
@@ -91,3 +89,26 @@ prop divisible_by(n, m R):
 
 6 $divisible_by 3
 ```
+
+## Make a Proposition always True
+
+We claimed a Proposition before. Litex consider it unknown because we don't give it *if and only if*:
+
+```litex
+prop form_triangles(x, y, z N_pos)
+
+$form_triangles(1, 2, 3)
+```
+
+Sometimes, you may want to continue your logic without a specific claim to a Proposition, you can make Litex to consider it's true first:
+
+```litex
+prop form_triangles(x, y, z N_pos)
+
+know forall m, n, l N_pos:
+    $form_triangles(m, n, l)
+
+$form_triangles(1, 2, 3)
+```
+
+> Note: Remember to fill the Proposition later. Or your logic looks specious.
