@@ -9,7 +9,7 @@ forall x N_pos:
 
 `$in` here is a build-in Proposition for Litex users, which means the literal meaning *in*. You can also use it here like `$in(x, R)` according to last chapter. So above lines claimed a obvious fact: for all `x` in `N_pos`, `x` in `R`.
 
-What should be like if we meet more complex situation like this fact: for all x, y in R, if x >0, y > 0, then x + y > 0. This fact includes additional restriction, which could be expressed by Litex like:
+What should be like if we meet more complex situation like this fact: for all `x`, `y` in `R`, if `x > 0`, `y > 0`, then `x + y > 0`. This fact includes additional restriction, which could be expressed by Litex like:
 
 ```litex
 forall x, y R:
@@ -37,3 +37,5 @@ forall x N_pos:
     then:
         x $in R
 ```
+
+## 
