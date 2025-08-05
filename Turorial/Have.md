@@ -62,7 +62,7 @@ know $exist_in(s)
 have n s
 ```
 
-`exist_in` is a built-in Exist Proposition, you could use it directly.
+`exist_in` is a built-in Exist Proposition, you could use it directly. From the result provided by Litex, `have n s` equals `have n st $exist_in(s)` in Litex.
 
 ## Different between `let` and `have`
 
