@@ -87,3 +87,26 @@ prop divisible_by(n, m R):
 
 6 $divisible_by 3
 ```
+
+## Make a Proposition always True
+
+We claimed a Proposition before. Litex consider it unknown because we don't give it *if and only if*:
+
+```litex
+prop form_triangles(x, y, z N_pos)
+
+$form_triangles(1, 2, 3)
+```
+
+Sometimes, you may want to continue your logic without a specific claim to a Proposition, you can make Litex to consider it's true first:
+
+```litex
+prop form_triangles(x, y, z N_pos)
+
+know forall m, n, l N_pos:
+    $form_triangles(m, n, l)
+
+$form_triangles(1, 2, 3)
+```
+
+> Note: Remember to fill the Proposition later. Or your code would look specious.
