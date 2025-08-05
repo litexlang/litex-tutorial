@@ -79,4 +79,4 @@ x $in R
 x > m
 ```
 
-now, you make an Object `x` which is satisfied `larger_than`. But you have to ensure the Exist Proposition was proved.
+You claimed an Object `x` which is satisfied `larger_than(m)`. Still remember, ensure the Exist Proposition was proved before you call it, or you would get Error form Litex.
