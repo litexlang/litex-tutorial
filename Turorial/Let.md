@@ -55,3 +55,17 @@ let x, y R:
     2 * x + 3 * y = 10
     4 * x + 5 * y = 14
 ```
+
+## Claim Function from Function Template
+
+You can claim [Function](https://litexlang.org/doc/Turorial/Function) from [Function Template](https://litexlang.org/doc/Turorial/Function_Template) via `let`, too:
+
+```litex
+fn_template finite_seqence(s set, max N):
+    fn (n N) R:
+        dom:
+            n < max
+
+let fs1 finite_seqence(R, 10):
+    fs1(n) = n * n
+```
