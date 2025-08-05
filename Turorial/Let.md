@@ -66,6 +66,22 @@ fn_template finite_seqence(s set, max N):
         dom:
             n < max
 
+let n N
+
 let fs1 finite_seqence(R, 10):
+    fs1(n) = n * n
+```
+
+As you learned on last section, lines here is the shorter style of the following codes:
+
+```litex
+fn_template finite_seqence(s set, max N):
+    fn (n N) R:
+        dom:
+            n < max
+
+let fs1 finite_seqence(R, 10):
+
+know forall n N:
     fs1(n) = n * n
 ```
