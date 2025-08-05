@@ -30,7 +30,7 @@ forall x R:
         x + y > 0
 ```
 
-If you claim `x` in `N_pos` (the set of positive natural numbers) in the first line, there is no `dom` anymore. Then, you could hide `iff`:
+If you claim `x` in `N_pos` (the set of positive natural numbers) in the first line, there is no `dom` anymore. Then, you could hide `iff`.So, starndard code of the example at the beginning of this chapter should be like:
 
 ```litex
 forall x N_pos:
