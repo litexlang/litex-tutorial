@@ -92,7 +92,7 @@ prop divisible_by(n, m R):
 
 ## Make a Proposition always True
 
-We claimed a Proposition before. Litex consider it unknown because we don't give it *if and only if*:
+We claimed an empty Proposition `form_triangles`. Litex consider it unknown because we don't give it *if and only if* part:
 
 ```litex
 prop form_triangles(x, y, z N_pos)
@@ -100,7 +100,7 @@ prop form_triangles(x, y, z N_pos)
 $form_triangles(1, 2, 3)
 ```
 
-Sometimes, you may want to continue your logic without a specific claim to a Proposition, you can make Litex to consider it's true first:
+Sometimes, you may want to continue your logic without a specific claim to a Proposition, you can make Litex to consider an empty Proposition true temporarily:
 
 ```litex
 prop form_triangles(x, y, z N_pos)
