@@ -20,7 +20,7 @@ forall x, y R:
         x + y > 0
 ```
 
-Just like we add additional restriction on Proposition, we use `dom`! And as it should be, `dom` here could be hidden here as well:
+To make claim lines less, you could hide some reserved word for some situation. For example, you could hide `dom`:
 
 ```litex
 forall x R:
@@ -30,12 +30,10 @@ forall x R:
         x + y > 0
 ```
 
-You should have thought of it as well, the example at the beginning of this chapter is to hide the `then` because there is no `dom`! So, the default lines are:
+If you claim `x` in `N_pos` (the set of positive natural numbers) in the first line, there is no `dom` anymore. Then, you could hide `iff`:
 
 ```litex
 forall x N_pos:
     then:
         x $in R
 ```
-
-## 

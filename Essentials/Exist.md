@@ -4,7 +4,7 @@
 
 ## Claim a Exist Proposition
 
-You can claim an Exist Proposition `larger_than_y`(For all `y` in `R` and `y > 0`, there exists `x` in `R` such that `x > y`):
+You can claim an Exist Proposition `larger_than`(For all `y` in `R` and `y > 0`, there exists `x` in `R` such that `x > y`):
 
 ```litex
 exist_prop x R st larger_than(y R):
