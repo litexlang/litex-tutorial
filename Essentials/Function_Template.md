@@ -1,24 +1,29 @@
 # Function Template
 
-Function Template is a Litex tool to help users define Function more easily.
+Function Template is a Litex tool to help users define Function more easily. Also, you could regard it as a set of Functions.
 
 ## Define a Function Template
 
-The way defining Function Template looks like how we define a Function:
+The way defining Function Template looks like how we define a Function. You can define a `seqence`():
 
 ```litex
-fn_template square_root(x R) R:
+fn_template seqence(x R):
     dom:
         x >= 0
-    then:
-        square_root(x) * square_root(x) = x
+    fn (y N) R:
+        dom:
+            y >= 0
+        then:
+            square_root(x) * square_root(x) = x
 ```
 
-So, all the features from defining a Function fit Function Template such as hiding `dom`, hiding `then` and etc. 
+- `fn_template` is the reserved word of Function Template
+- `seqence` is the name of Function Template
+- String in parentheses, `x R`, are Objects (and the set they're in) which will be used in this Function Template.
+- `fn` part is just like the rule of the definition of Function without Function name.
+- all the features from defining a Function fit Function Template such as hiding `dom`, hiding `then` and etc. 
 
 ## Define a Function via Function Template
-
-<!-- TODO How this work? -->
 
 Litex provides Function Template to help users get rid of the quagmire of rewriting method definitions.
 

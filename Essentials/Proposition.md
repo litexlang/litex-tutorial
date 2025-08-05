@@ -4,7 +4,7 @@ Same as the definition in math, Proposition is a sentence that is either true or
 
 ## Claim a Proposition
 
-You can claim a Proposition `form_triangles`(`x`, `y`, `z` in `R` is able to form triangles if and only if the sum of any two is greater than the third one):
+You can claim a Proposition `form_triangles`(`x`, `y`, `z` in `R` and `x > 0`, `y > 0`, `z > 0` is able to form triangles if and only if the sum of any two is greater than the third one):
 
 ```litex
 prop form_triangles(x, y, z R):
@@ -18,11 +18,7 @@ prop form_triangles(x, y, z R):
         y + z > x
 ```
 
-- `prop` is the reserved word of Proposition. 
-- `form_triangles` is the name of this Proposition. 
-- String in parentheses, `x, y, z R`, are Objects (and the set they're in) which will be used in this Proposition. 
-- `dom` is the additional restrictions for those Objects. 
-- `iff` means the part *if and only if* in a Proposition. So you should write the logic after *if and only if* in `iff`.
+`prop` is the reserved word of Proposition. `dom` is the additional restrictions for those Objects. `iff` means the part *if and only if* in a Proposition. So you should write the logic after *if and only if* in `iff`.
 
 To make claim lines less, you could hide some reserved word for some situation. For example, you could hide `dom` when you write Proposition `form_triangles`:
 

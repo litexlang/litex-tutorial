@@ -17,7 +17,7 @@ fn square_root(x R) R:
 - `fn` is the reserved word of Function. 
 - `square_root` is the name of this Function. 
 - String in parentheses, `x R`, are Objects (and the set they're in) which will be used in this Function. 
-- The last word, `R`, in the first line means the *codomain* of this Function.
+- The last word in the first line, `R`, means the *codomain* of this Function.
 - `dom` is the additional restrictions for those Objects, which is the *domain* of this Function.
 - `then` means the part *then* in a Function. So you should write the dependency after *then* in `then`.
 
@@ -52,8 +52,6 @@ fn function(x R) R:
     dom:
         x > 0
 ```
-
-<!-- TODO in which situation, user would use this format -->
 
 > Note: If there is only dom in your Function, you can't hide `dom` anymore. Or Litex would misunderstand your lines with the situation that Function with `then` only.
 
