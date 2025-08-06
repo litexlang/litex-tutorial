@@ -4,9 +4,9 @@ Or represents an inclusive disjunction, meaning at least one of the conditions i
 
 ```litex
 let x R:
-    x > 5
+    x = 1
 
 or:
-    x > 6
-    x < 1
+    x = 1
+    x = 2
 ```
