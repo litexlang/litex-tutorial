@@ -37,3 +37,5 @@ forall x N_pos:
     then:
         x $in R
 ```
+
+<!-- TODO add forall ... dom ... then ... iff ... part -->
