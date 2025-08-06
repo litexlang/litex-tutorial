@@ -204,10 +204,10 @@ Litex is a simple language. I hope many of the keywords are already familiar to 
 | `prove_by_math_induction`       | prove by mathematical induction                                                                      |
 | `prove_over_finite_set`         | prove a universal statement by iterating over a finite set                                           |
 | `import`                        | import a file or directory                                                                           |
-| `exist_in`                      | exist a object in a set                                                                              |
-| `set_defined_by_replacement`    | define a set by a axiom of replacement                                                               |
-| `obj_exist_as_preimage_of_prop` | exist a object as the preimage of a proposition                                                      |
-| `obj_exist_as_preimage_of_fn`   | exist a object as the preimage of a function                                                         |
+| `exist_in`                      | exist an object in a set                                                                              |
+| `set_defined_by_replacement`    | define a set by an axiom of replacement                                                               |
+| `obj_exist_as_preimage_of_prop` | exist an object as the preimage of a proposition                                                      |
+| `obj_exist_as_preimage_of_fn`   | exist an object as the preimage of a function                                                         |
 
 [^3]: Although these keywords are rarely defined strictly in math textbooks, they are used everyday and everywhere. Litex creator can not find strict definition for keywords like `proposition`, `is`, `in` etc (actually, the word `definition` is also a vague word). He tried his best to make the meaning of these keywords as close to the meaning in our daily math expression, along with his own ideas and understanding, so that Litex is both intuitive and strict.
 

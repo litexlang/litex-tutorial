@@ -1,6 +1,6 @@
 # Exist
 
-## Claim a Exist Proposition
+## Claim an Exist Proposition
 
 You can claim an Exist Proposition `larger_than`(For all `y` in `R` and `y > 0`, there exists `x` in `R` such that `x > y`):
 
@@ -31,7 +31,7 @@ exist_prop x R st larger_than(y N_pos):
 
 ## Prove claimed Exist Proposition
 
-Every Exist Proposition have to be proved. Like what you usual do on math, You can just give an example with `exist`:
+Every Exist Proposition have to be proved. Like what you usually do on math, You can just give an example with `exist`:
 
 ```litex
 exist_prop x R st larger_than(y R):
@@ -56,7 +56,7 @@ know forall m N_pos:
     $larger_than(m)
 ```
 
-## Call a Exist Proposition
+## Call an Exist Proposition
 
 Now, you may want to claim an Object which is satisfied this Exist Proposition. You should use `have ... st ...`:
 
