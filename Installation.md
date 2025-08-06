@@ -21,6 +21,8 @@ wget https://github.com/litexlang/golitex/releases/download/0.1.8-beta/litex_0.1
 sudo dpkg -i litex_0.1.8-beta_amd64.deb
 ```
 
+For Windows users, please download MSI file form [here](https://github.com/litexlang/golitex/releases/download/0.1.8-beta/litex_0.1.8-beta_windows_amd64.msi)
+
 ## Try Litex on your machine
 
 Run `litex` on your terminal, you would see next lines, which means you've installed Litex successfullly!
