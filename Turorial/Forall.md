@@ -38,4 +38,16 @@ forall x N_pos:
         x $in R
 ```
 
-<!-- TODO add forall ... dom ... then ... iff ... part -->
+Sometimes, you may want to claim two **equivalent** facts caused by the same restriction. You can add an `iff` after `then` block:
+
+```litex
+forall x R:
+    dom:
+        x > 1
+    then:
+        x <= 2
+    iff:
+        not x > 2
+```
+
+> Note: Above format support fact_1 <=> fact_2 only. Two facts must be **equivalent**
