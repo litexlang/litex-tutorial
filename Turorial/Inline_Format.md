@@ -2,7 +2,7 @@
 
 To align to the writing habits of mathematicians. Litex provides Inline Format.
 
-| Symbol | usage                                   |
+| Symbol | Usage                                   |
 | :----- | :-------------------------------------- |
 | `:`    | `:` is equal to every `dom` in Litex.   |
 | `=>`   | `=>` is equal to every `then` in Litex. |
