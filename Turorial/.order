@@ -2,6 +2,7 @@ Introduction
 Basic_Knowledge
 Let
 Have
+Multiline_Equations
 Forall
 Not
 Or
@@ -9,5 +10,7 @@ Proposition
 Exist
 Function
 Function_Template
-Prove
-Claim
+Proof
+Package
+Comment
+Inline_Format
