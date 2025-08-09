@@ -101,7 +101,5 @@ claim:
 
 `prove_in_each_case` should always be used with `or` together:
 
-```litex
-## TODO Provide a Litex-acceptable example
-```
+<!-- TODO Provide a Litex-acceptable example -->
 
