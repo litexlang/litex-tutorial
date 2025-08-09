@@ -31,9 +31,6 @@ x = 0
 `prove` provide a individual part to show your sub-logic to readers. Litex won't use it to parent-environment. You can use `claim` to make something affect part out of the Prove sub-environment:
 
 ```litex
-$larger_is_transitive(3, 2, 1)
-3 > 1
-
 claim:
     @p(x N):
         x > 1
