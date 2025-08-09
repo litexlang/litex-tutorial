@@ -112,3 +112,36 @@ $form_triangles(1, 2, 3)
 ```
 
 > Note: Remember to fill the Proposition later. Or your logic looks specious.
+
+## Call Proposition in Restriction
+
+You can call Proposition everywhere you want after claiming. You can call it in restriction:
+
+```litex
+prop p(x , y R):
+    x < y
+    y < 0
+
+know forall x, y R:
+    $p(x , y)
+    then:
+        x < 0
+
+let a, b R
+$p(a, b)
+a < 0
+```
+
+In this case, Litex provides a short style for you to write via `@`:
+
+```litex
+@p(x, y R):
+    x < y
+    y < 0
+    then:
+        x < 0
+
+let a, b R
+$p(a, b)
+a < 0
+```
