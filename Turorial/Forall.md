@@ -1,4 +1,6 @@
-# For all
+# Forall
+
+Math is about deriving new facts from established ones. We can derive specific facts from general facts. 
 
 *For all* is a common conception in math and even in real world. To express *for all* in Litex, we use `forall`:
 

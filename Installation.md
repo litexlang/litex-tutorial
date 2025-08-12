@@ -32,3 +32,7 @@ Litex-beta - Type your code or 'exit' to quit
 Warning: not yet ready for production use.
 >>> 
 ```
+
+<!--
+TODO: Jupyter Notebook
+-->
