@@ -16,12 +16,12 @@ fn square_root(x R) R:
         square_root(x) * square_root(x) = x
 ```
 
-- `fn` is the reserved word of Function. 
+- `fn` is the reserved word of Function. You can declare a new function by using `fn`.
 - `square_root` is the name of this Function. 
-- String in parentheses, `x R`, are Objects (and the set they're in) which will be used in this Function. 
-- The last word in the first line, `R`, means the *range* (co-domain) of this Function.
-- `dom` is the additional restrictions for those Objects, which is the *domain* of this Function.
-- `then` means the part *then* in a Function. So you should write the dependency after *then* in `then`.
+- String in parentheses, `x R`, are Object-Set pairs (and the set they're in) which will be used in this Function. e.g. function `square_root` takes an Object `x` in the set `R` as parameter.
+- The last word in the first line, `R`, means the *range* (co-domain) of this Function. e.g. the range of `square_root` is `R`.
+- `dom` is the additional restrictions for those Objects, which is the *domain* of this Function. When you pass objects into a Function, you should make sure the objects are in the domain. For example, `square_root(-1)` is invalid because `-1` is not in the domain of `square_root`: `-1 >= 0` is not true.
+- `then` contains facts that the function satisfies. For example, here we assume that `square_root(x) * square_root(x) = x` for all `x` in `R` that `x >= 0`. Such facts are by definition true, without any proof. So you must be careful when you are defining function properties with `then`. For example, if you mistype `square_root(x) * square_root(x) = -1`, which is absurd, you would not get any error from Litex.
 
 To make definition lines less, you could hide some reserved word for some situation. For example, you could hide `dom` when you write Proposition `square_root`:
 
@@ -44,7 +44,7 @@ Just like the feature of Proposition, you can define a Function without `then` b
 fn function(x N) R
 ```
 
-Of course, you can define a Function with only additional restrictions like the following lines, which express the similar meaning like the above line:
+Of course, you can define a Function with specified domain with `dom`, which express the similar meaning like the above line.
 
 ```litex
 fn function(x R) R:

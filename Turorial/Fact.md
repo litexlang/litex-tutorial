@@ -28,3 +28,11 @@ $large_than_zero(1)
 ```
 
 As you can see, `large_than_zero` is a proposition. `>` is a built-in proposition. When we put `1` into `large_than_zero`, it becomes a Factual Statement `$large_than_zero(1)`. In this case, since `1 > 0` is true, `$large_than_zero(1)` is true. We use symbol `$` to distinguish a Factual Statement from a function.
+
+When a proposition takes exactly two objects, you can write the proposition name infix. Litex allows you to do so because that Litex wants the user to feel as if they are writing daily math and have familiar feelings.
+
+```litex
+$in(1, N)
+1 $in N
+```
+
