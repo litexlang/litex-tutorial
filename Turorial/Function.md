@@ -19,7 +19,7 @@ fn square_root(x R) R:
 - `fn` is the reserved word of Function. 
 - `square_root` is the name of this Function. 
 - String in parentheses, `x R`, are Objects (and the set they're in) which will be used in this Function. 
-- The last word in the first line, `R`, means the *codomain* of this Function.
+- The last word in the first line, `R`, means the *range* (co-domain) of this Function.
 - `dom` is the additional restrictions for those Objects, which is the *domain* of this Function.
 - `then` means the part *then* in a Function. So you should write the dependency after *then* in `then`.
 
@@ -32,16 +32,13 @@ fn square_root(x R) R:
         square_root(x) * square_root(x) = x
 ```
 
-If you claim `x` in `N` in the first line, there is no `dom` anymore. Then, you could hide `then`. Function `square_root` could also be writen like:
+There is inline version of fn definition. It is the same as the above definition. Inline version is more compact and aligned to daily writing habits of mathematicians.
 
 ```litex
-fn square_root(x N) R:
-    square_root(x) * square_root(x) = x
+fn square_root(x R) R: x >= 0 => square_root(x) * square_root(x) = x
 ```
 
-For this definition, codomain of Function is still `R`, but domain of Function is `N` because there is no `dom`.
-
-Just like the feature of Proposition, you can define a Function without `then` but only a name like the following line, which means a Function with domain and codomain but no dependency:
+Just like the feature of Proposition, you can define a Function without `then` but only a name like the following line, which means a Function with domain and range but no dependency:
 
 ```litex
 fn function(x N) R
@@ -103,3 +100,4 @@ let fs1 finite_seqence(R, 10):
 know forall n N:
     fs1(n) = n * n
 ```
+
