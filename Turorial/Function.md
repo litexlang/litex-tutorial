@@ -1,10 +1,12 @@
 # Function
 
-Same as the definition in math, Function means how a varying quantity depends on another quantity.  
+Functions are one of the most important concepts in math. They are used to describe the relationship between two quantities. Although Litex is still a computer language, it is very different from programming languages like Python and C, because Litex is very close to math and math is different from programming. You can see such gap by viewing the difference of the concept of `function` in math and programming.
+
+In programming like Python or Lean, a function is a block of executable code that performs computation or side effects. In math, a function is a symbol that builds a new symbol from input symbols (no execution). In both math and programming, you can think of a function as a symbol that uses `()` to wrap its input symbols to form a new symbol. For example, `square_root(x)` is a function that takes an input `x` and returns a new symbol `square_root(x)` without any execution.
 
 ## Define a Function
 
-You can define a Function `square_root`(for all `x` in `R`, if `x` >= 0, then there is some special value in `R` make `square_root(x) * square_root(x)` euqals `x`):
+You can define a Function `square_root`(for all `x` in `R`, if `x` >= 0, then there is some special value in `R` make `square_root(x) * square_root(x)` equals `x`):
 
 ```litex
 fn square_root(x R) R:
@@ -69,3 +71,35 @@ square_root(4) $in R
 ```
 
 > Note: Litex is a formal language **to PROVE** instead of to compute, so `square_root(4)` here is not equal 2. `square_root(4)` here means there is a value in `R` that makes `square_root(x) * square_root(x) = x` and we don't care which number is the value.
+
+## Declare Function from Function Template Using `let`
+
+Functions are also objects. Since `let` can be used to declare objects, you can also use it to declare a Function. You can claim [Function](https://litexlang.org/doc/Turorial/Function) from [Function Template](https://litexlang.org/doc/Turorial/Function_Template) via `let`, too:
+
+```litex
+# declare a function template
+fn_template finite_seqence(s set, max N):
+    fn (n N) R:
+        dom:
+            n < max
+
+let n N
+
+# declare a function with a function template
+let fs1 finite_seqence(R, 10):
+    fs1(n) = n * n
+```
+
+As you learned on last section, lines here is the shorter style of the following codes.
+
+```litex
+fn_template finite_seqence(s set, max N):
+    fn (n N) R:
+        dom:
+            n < max
+
+let fs1 finite_seqence(R, 10):
+
+know forall n N:
+    fs1(n) = n * n
+```

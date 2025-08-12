@@ -54,34 +54,3 @@ let x, y R:
     4 * x + 5 * y = 14
 ```
 
-## Declare Function from Function Template
-
-You can claim [Function](https://litexlang.org/doc/Turorial/Function) from [Function Template](https://litexlang.org/doc/Turorial/Function_Template) via `let`, too:
-
-```litex
-# declare a function template
-fn_template finite_seqence(s set, max N):
-    fn (n N) R:
-        dom:
-            n < max
-
-let n N
-
-# declare a function with a function template
-let fs1 finite_seqence(R, 10):
-    fs1(n) = n * n
-```
-
-As you learned on last section, lines here is the shorter style of the following codes:
-
-```litex
-fn_template finite_seqence(s set, max N):
-    fn (n N) R:
-        dom:
-            n < max
-
-let fs1 finite_seqence(R, 10):
-
-know forall n N:
-    fs1(n) = n * n
-```
