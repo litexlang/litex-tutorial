@@ -1,52 +1,50 @@
 # Let
 
-To express that an object is in a set, we use `let`, too. You can claim an Object `n` which is in the set `N`.:
+In mathematics, anything can be considered an *object*. When you want to use an object in Litex, you must first declare it. The most common way to declare an object is with `let`. In Litex, `let` is used to declare an object by giving it a **name** and specifying the **set** it belongs to. 
+
+```litex
+let object_name set_it_belongs_to
+```
+
+For example, to declare an object `n` in the set `N` (natural numbers):
 
 ```litex
 let n N
 ```
 
-## Claim Objects
+You must declare an object before using it, and object names must be unique. For example, when you have already `let a N`, you can not `let a N` again.
 
-You could claim Objects `n`, `m` in `N` in one line:
+You could claim multiple Objects in one line.
 
 ```litex
-let n, m N
+let n N, m N
 ```
 
-> Note: Above line is same as the line `let n N, m N`. Here is a syntactic sugar for you.
+Declaring multiple objects in one line is common because sometimes we want to declare multiple objects with relations between them. For example, you can claim two natural numbers `n` and `m` such that `n > 0` and `m > n`. You can also attach facts to objects at the time of declaration using `:`. For example, the following declares two natural numbers `n` and `m` such that `n > 0` and `m > n`:
 
-You can claim Objects `n`, `m` in `N` and `z` in `Z` in one line, too:
+```litex
+let n, m N:
+    n > 0
+    m > n
+```
+
+As you might guess, 
+
+Notice `let n, m N` is the same as `let n N, m N`. This is a syntactic sugar in Litex: when declaring multiple objects that belong to the same set, you can list their names separated by commas, followed by the set name. Such syntactic sugar also works for statements like `fn`, `forall`, `prop` etc, where the user wants to declare multiple objects with the same set.
+
+You can claim objects with different sets in one line, too. For example, you can claim an Object `n` in `N` and an Object `z` in `Z` in one line:
 
 ```litex
 let n, m N, z Z
 ```
 
-You can even claim Object in a Set which you just claimed:
+You can even claim an Object in a Set which you just claimed.
 
 ```litex
 let s set, n s
 ```
 
 > Note: You can't change the claim order in last example. `s` must be claimed first because `n` cannot be claimed before Litex know what is `s`
-
-## Claim Objects with additional restriction
-
-If you want to claim an Object with additional restriction, `n` in `N` and `n > 5`, you may write the following lines:
-
-```litex
-let n N
-
-know:
-    n > 5
-```
-
-Above lines work, but Litex provides a shorter style:
-
-```litex
-let n N:
-    n > 5
-```
 
 For Objects with multi-restrictions like claiming multivariate linear equation (2x + 3y = 10, 4x + 5y = 14):
 
@@ -56,11 +54,12 @@ let x, y R:
     4 * x + 5 * y = 14
 ```
 
-## Claim Function from Function Template
+## Declare Function from Function Template
 
 You can claim [Function](https://litexlang.org/doc/Turorial/Function) from [Function Template](https://litexlang.org/doc/Turorial/Function_Template) via `let`, too:
 
 ```litex
+# declare a function template
 fn_template finite_seqence(s set, max N):
     fn (n N) R:
         dom:
@@ -68,6 +67,7 @@ fn_template finite_seqence(s set, max N):
 
 let n N
 
+# declare a function with a function template
 let fs1 finite_seqence(R, 10):
     fs1(n) = n * n
 ```

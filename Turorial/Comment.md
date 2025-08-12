@@ -15,3 +15,5 @@ some comment
 some comment
 """
 ```
+
+Comments are very helpful for you to understand the code and for the system to check your code.
