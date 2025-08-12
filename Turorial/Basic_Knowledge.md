@@ -43,14 +43,24 @@ There, you claimed an empty set without any feature. In Litex, there are build-i
 
 ## Know
 
-Sometimes, we hope to claim some knowledge is correct by default. We could use `know` to claim it:
+Sometimes, we hope to claim some knowledge is correct by default. It can be a fact that is so obvious that we don't need to prove it, or can be the basic assumption of the proof, or can be an axiom. We could use `know` to claim it. For example, you can claim that `n` is larger than 0 by default:
 
 ```litex
-know 1 = 1
+let n N
 
+know n > 0
+```
+
+`know` can be very helpful when you want to focus on the main logic of your proof and not be bothered by the details. You can use `know` to make it true and come back to prove it later. However, `know` is powerful and dangerous. For example, you can claim that `1` is equal to `2` by default, which is obviously wrong:
+
+
+```litex
 know 1 = 2
 ```
 
-As you can see, `know` is powerful and dangerous. **Use it carefully.**
+Use `know` carefully.
 
-> Note: Sometimes, you could set some fact as `know` temporarily and try to prove it later. Then, you can continue your workflow more smoothly.
+
+
+
+
