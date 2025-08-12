@@ -19,11 +19,13 @@ fn square_root(x R) R:
 - `fn` is the reserved word of Function. You can declare a new function by using `fn`.
 - `square_root` is the name of this Function. 
 - String in parentheses, `x R`, are Object-Set pairs (and the set they're in) which will be used in this Function. e.g. function `square_root` takes an Object `x` in the set `R` as parameter.
-- The last word in the first line, `R`, means the *range* (co-domain) of this Function. e.g. the range of `square_root` is `R`.
+- The last word in the first line, `R`, means the *range* (co-domain) of this Function. e.g. the range of `square_root` is `R`. In this case, `forall x R: square_root(x) $in R` is by definition true.
 - `dom` is the additional restrictions for those Objects, which is the *domain* of this Function. When you pass objects into a Function, you should make sure the objects are in the domain. For example, `square_root(-1)` is invalid because `-1` is not in the domain of `square_root`: `-1 >= 0` is not true.
-- `then` contains facts that the function satisfies. For example, here we assume that `square_root(x) * square_root(x) = x` for all `x` in `R` that `x >= 0`. Such facts are by definition true, without any proof. So you must be careful when you are defining function properties with `then`. For example, if you mistype `square_root(x) * square_root(x) = -1`, which is absurd, you would not get any error from Litex.
+- `then` contains facts that the function satisfies. For example, `forall x R: x >= 0 => square_root(x) * square_root(x) = x` is by definition true. Such facts are by definition true, without any proof. So you must be careful when you are defining function properties with `then`. For example, if you mistype `square_root(x) * square_root(x) = -1`, which is absurd, you would not get any error from Litex. 
 
-To make definition lines less, you could hide some reserved word for some situation. For example, you could hide `dom` when you write Proposition `square_root`:
+**NOTE FROM THE AUTHOR: If you want to declare a function with safe guarantee, you should use keyword `set_defined_by_replacement` instead of `fn`. This functionality will be implemented soon. Sorry for the inconvenience.**
+
+Litex encourages you to write clean and short code. For example, you could hide `dom` when you write Function `square_root` like this:
 
 ```litex
 fn square_root(x R) R:
@@ -32,13 +34,13 @@ fn square_root(x R) R:
         square_root(x) * square_root(x) = x
 ```
 
-There is inline version of fn definition. It is the same as the above definition. Inline version is more compact and aligned to daily writing habits of mathematicians.
+Litex respects users’ habits, which helps close the gap between them and the language, making them more willing to use Litex in their daily work. When writing mathematics, people are used to putting everything on one line, so Litex also allows users to do the same. There is inline version of fn definition. It is the same as the above definition. Inline version is more compact and aligned to daily writing habits of mathematicians.
 
 ```litex
 fn square_root(x R) R: x >= 0 => square_root(x) * square_root(x) = x
 ```
 
-Just like the feature of Proposition, you can define a Function without `then` but only a name like the following line, which means a Function with domain and range but no dependency:
+You can define a Function without `then` and `dom`, but only a name like the following line, which means a Function with domain and range but no dependency. For example, `function` defined here is a Function that takes an Object `x` in the set `N` as parameter and returns a value in the set `R`. So `forall x N: function(x) $in N` is by definition true.
 
 ```litex
 fn function(x N) R
@@ -52,11 +54,18 @@ fn function(x R) R:
         x > 0
 ```
 
-> Note: If there is only dom in your Function, you can't hide `dom` anymore. Or Litex would misunderstand your lines with the situation that Function with `then` only.
+When there is no `dom`, you can hide both `dom` and `then` like this. For example, `forall x R: f(x) > 0` is by definition true.
+
+```litex
+fn function(x R) R:
+    f(x) > 0
+```
+
+> Note: If there is only `dom` in your Function, you can't hide `dom` anymore. Or Litex would misunderstand your lines with the situation that Function with `then` only.
 
 ## Call a Function
 
-Not like the way we call a Proposition, you could call Function anywhere directly after defining a Function:
+Just like the way we use function in math, you can call a function by `functionName(parameters)`. For example, `square_root(4)` is a function call.
 
 ```litex
 fn square_root(x R) R:
@@ -71,7 +80,7 @@ square_root(4) $in R
 
 ## Declare Function from Function Template Using `let`
 
-Functions are also objects. Since `let` can be used to declare objects, you can also use it to declare a Function. You can claim [Function](https://litexlang.org/doc/Turorial/Function) from [Function Template](https://litexlang.org/doc/Turorial/Function_Template) via `let`, too:
+Functions are also objects. Since `let` can be used to declare objects, you can also use it to declare a Function.
 
 ```litex
 # declare a function template
