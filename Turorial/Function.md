@@ -84,7 +84,7 @@ Functions are also objects. Since `let` can be used to declare objects, you can 
 
 ```litex
 # declare a function template
-fn_template finite_seqence(s set, max N):
+fn_template finite_sequence(s set, max N):
     fn (n N) R:
         dom:
             n < max
@@ -92,19 +92,19 @@ fn_template finite_seqence(s set, max N):
 let n N
 
 # declare a function with a function template
-let fs1 finite_seqence(R, 10):
+let fs1 finite_sequence(R, 10):
     fs1(n) = n * n
 ```
 
 As you learned on last section, lines here is the shorter style of the following codes.
 
 ```litex
-fn_template finite_seqence(s set, max N):
+fn_template finite_sequence(s set, max N):
     fn (n N) R:
         dom:
             n < max
 
-let fs1 finite_seqence(R, 10):
+let fs1 finite_sequence(R, 10):
 
 know forall n N:
     fs1(n) = n * n
