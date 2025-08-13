@@ -79,50 +79,37 @@ exist_prop x R st larger_than(y N_pos):
 
 ## Prove claimed Exist Proposition
 
-Every Exist Proposition have to be proved. Like what you usually do on math, You can just give an example with `exist`:
+When being called, exist proposition behaves exactly like how a normal proposition does. For example, here we assume `larger_than` is true for all `y` in `N_pos` and we claim there is some object that is larger than 2.
 
 ```litex
 exist_prop x R st larger_than(y R):
-    y > 0
-    iff:
-        x > y
+    x > y
 
-let m N_pos
-
-know exist m + 1 st $larger_than(m)
-```
-
-Or, you can just claim it's true on a specific set:
-
-```litex
-exist_prop x R st larger_than(y R):
-    y > 0
-    iff:
-        x > y
-
-know forall m N_pos:
-    $larger_than(m)
-```
-
-## Call an Exist Proposition
-
-Now, you may want to claim an Object which is satisfied this Exist Proposition. You should use `have ... st ...`:
-
-```litex
-exist_prop x R st larger_than(y R):
-    y > 0
-    iff:
-        x > y
-
-know forall y N_pos:
+know forall y R:
     $larger_than(y)
 
-let m N_pos
-
-have x st $larger_than(m)
-
-x $in R
-x > m
+$larger_than(2)
 ```
 
-You claimed an Object `x` which is satisfied `larger_than(m)`. Still remember, ensure the Exist Proposition was proved before you call it, or you would get Error form Litex.
+However, there is one big difference between exist proposition and normal proposition. You can prove an exist proposition by providing a specific object. For example, here we prove `larger_than(2)` by providing `3`:
+
+```litex
+exist_prop x R st larger_than(y R):
+    x > y
+
+exist 3 st $larger_than(2)
+```
+
+Since `not exist` is equivalent to `forall not`, when the reverse of a existential fact is true, then the related `forall not` fact is automatically true. See the following example:
+
+```litex
+prop q(x R, y R)
+
+exist_prop x R st p(y R):
+    $q(x, y)
+
+know not $p(2)
+
+forall x R:
+    not $q(x, 2)
+```
