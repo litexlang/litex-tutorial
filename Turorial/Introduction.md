@@ -114,3 +114,5 @@ forall x Z:
 $is_group(R, +, inverse, 0)
 $is_group(Z, +, inverse, 0)
 ```
+
+[^1]: [Computer programming as an art](https://dl.acm.org/doi/10.1145/1283920.1283929)
