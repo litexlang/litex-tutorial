@@ -1,5 +1,11 @@
 # Introduction
 
+## Words from the creator
+
+Hi, I am Jiachen Shen, a hacker and creator of Litex. It is a computer language for formalizing reasoning. Computation is how math is used to solve real-world problems. Reason is how we enriches our understanding of the world. Such knowledge is precious because it can be mechanically verified by a given set of rules. Math, physics, computer science all rely on such strictness. The software industry has already revolutionized how we compute, and Litex is here to change how we reason.
+
+A good art is what makes its creator happy and makes its users find it useful.[^1] I hope Litex can be a good art for both me and its users.
+
 ## What is Litex
 
 Litex(/lɪ'tɛks/) is a simple and intuitive formal language, which is inspired by the Set Theory.
