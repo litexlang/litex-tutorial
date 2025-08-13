@@ -12,7 +12,7 @@ all numbers like `0`, `3.14159`, `-1` are Number. You could use it directly in L
 
 Anything in math can be called an object. Litex use `let` to claim an Object. When we declare an object, we should give it a name and the set it belongs to. i.e.
 
-```litex
+```
 let object_name the_set_it_belongs_to
 ```
 
