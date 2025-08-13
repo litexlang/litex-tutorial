@@ -20,6 +20,8 @@ forall x R: forall y R: y > 0 => y > 0 <=> y > 0; x > 0 => forall y R: y > 0 => 
 forall x R: forall x R: x > 0 => x > 0; 1 > 0, forall x R: x > 0 => x > 0; => 1 > 0, forall x R: x > 0 => x > 0; 1 > 0
 ```
 
+Equivalent multiple lines version:
+
 ```litex
 forall:
     1 + 1 = 2
