@@ -8,7 +8,7 @@ To quickly get a taste of Litex, you can try it directly in our [Playground](htt
 
 In this section we will introduce how to install Litex on your local machine.
 
-We recommand macOS users to install Litex by Homebrew with following command:
+We recommend macOS users to install Litex by Homebrew with following command:
 
 ```bash
 brew install litexlang/tap/litex
