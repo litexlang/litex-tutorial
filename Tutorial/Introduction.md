@@ -8,7 +8,20 @@ A good art is what makes its creator happy and makes its users find it useful.[^
 
 ## What is Litex
 
-Litex(/lɪ'tɛks/) is a simple and intuitive formal language, which is inspired by the Set Theory.
+Litex(/lɪ'tɛks/) is a simple and intuitive formal language.
+
+## How to read this tutorial
+
+The biggest strength of Litex is its intuitiveness. In the ideal case, we hope users can read and use Litex without having to learn it at all! 
+
+The purpose of this slim tutorial is:
+
+1. To record the most basic Litex syntax and keywords, ensuring there is no ambiguity for users.
+2. To provide some examples for beginners to reference.
+
+Please don’t feel any pressure when reading this tutorial — Litex is truly very simple.
+
+The best way to learn Litex is to try writing the examples from the tutorial yourself, or translate the mathematics (or reasoning) you care about into Litex.
 
 ## Intuitive
 
