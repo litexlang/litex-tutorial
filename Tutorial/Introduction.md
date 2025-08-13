@@ -103,7 +103,7 @@ Anyone can understand the above code. There is almost zero difference between ho
 
 ## Simple
 
-Litex is more align with the expression habits of natural language. Reserved word of Litex is derived from commonly used mathematical logic expressions. 
+The difficulty of writing mathematics in a formal language is usually about equal to the difficulty of the mathematics itself plus the difficulty of expressing that mathematics in the formal language. Litex’s goal is to reduce the latter to as close to zero as possible, allowing users to focus on the mathematics itself rather than on the language they are using.
 
 Here is an example: to prove sqrt(2) is irrational:
 
@@ -152,11 +152,71 @@ claim:
         0 = 1
 ```
 
+Litex code is pretty straightforward. Try to read the above code yourself. It is not hard. Below is the same example in Lean.
+
+<table style="border-collapse: collapse; width: 100%; font-size: 12px">
+  <tr>
+    <th style="border: 2px solid black; padding: 4px; text-align: left; width: 50%;">Litex</th>
+    <th style="border: 2px solid black; padding: 4px; text-align: left; width: 50%;">Lean 4</th>
+  </tr>
+  <tr>
+    <td style="border: 2px solid black; padding: 2px; line-height: 1.5">
+      <code>claim:</code><br>
+      <code>&nbsp;&nbsp;not sqrt(2) $in Q</code><br>
+      <code>&nbsp;&nbsp;prove_by_contradiction:</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;have x, y st $Q_representation_in_fraction(sqrt(2))</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;x = sqrt(2) * y</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;x ^ 2 = (sqrt(2) ^ 2) * (y ^ 2)</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;sqrt(2) ^ 2 = 2</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;x ^ 2 = 2 * (y ^ 2)</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;log(2, x ^ 2) = log(2, 2 * (y ^ 2))</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;log(2, x ^ 2) = 2 * log(2, x)</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;log(2, y ^ 2) = 2 * log(2, y)</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;log(2, 2 * (y ^ 2)) = log(2, 2) + log(2, y ^ 2)</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;log(2, 2) = 1</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;log(2, 2 * (y ^ 2)) = 1 + log(2, y ^ 2)</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;log(2, x ^ 2) = 1 + 2 * log(2, y)</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;2 * log(2, x) = 1 + 2 * log(2, y)</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;(2 * log(2, x)) % 2 = (1 + 2 * log(2, y)) % 2</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;(2 * log(2, x)) % 2 = 0</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;0 = (1 + 2 * log(2, y)) % 2</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;(1+2 * log(2, y)) % 2 = 1 % 2 + (2*log(2, y)) % 2</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;1 % 2 + (2 * log(2, y)) % 2 = 1 + 0</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;0 = 1</code>
+    </td>
+    <td style="border: 2px solid black; padding: 2px; line-height: 1.5">
+      <code>theorem sqrt2_irrational :</code><br>
+      <code>&nbsp;&nbsp;¬ ∃ a b : ℕ, a.gcd b = 1 ∧ a * a = 2 * b * b := by</code><br>
+      <code>&nbsp;&nbsp;intro h</code><br>
+      <code>&nbsp;&nbsp;obtain ⟨a, b, hcop, h⟩ := h</code><br><br>
+      <code>have ha_even : Even a := by</code><br>
+      <code>&nbsp;&nbsp;rw [Nat.mul_assoc] at h</code><br>
+      <code>&nbsp;&nbsp;have : Even (a * a) := by rw [h]; exact even_mul_right b b</code><br>
+      <code>&nbsp;&nbsp;exact even_of_even_sq this</code><br><br>
+      <code>obtain ⟨k, hk⟩ := ha_even</code><br><br>
+      <code>have h2 : 2 * k * k = b * b := by</code><br>
+      <code>&nbsp;&nbsp;rw [hk, ←mul_assoc, ←mul_assoc, mul_comm 2 2, ←mul_assoc] at h</code><br>
+      <code>&nbsp;&nbsp;apply Nat.mul_right_cancel (Nat.zero_lt_succ _)</code><br>
+      <code>&nbsp;&nbsp;rw [←h, ←mul_assoc, ←mul_assoc]</code><br>
+      <code>&nbsp;&nbsp;rfl</code><br><br>
+      <code>have hb_even : Even b :=</code><br>
+      <code>&nbsp;&nbsp;even_of_even_sq (by rw [←h2]; exact even_mul_left _ _)</code><br><br>
+      <code>obtain ⟨m, hm⟩ := hb_even</code><br><br>
+      <code>have : a.gcd b ≠ 1 := by</code><br>
+      <code>&nbsp;&nbsp;rw [hk, hm]</code><br>
+      <code>&nbsp;&nbsp;have : (2 * k).gcd (2 * m) = 2 * (k.gcd m) := Nat.gcd_mul_left_right</code><br>
+      <code>&nbsp;&nbsp;apply Nat.ne_of_gt</code><br>
+      <code>&nbsp;&nbsp;apply Nat.mul_pos (by decide)</code><br>
+      <code>&nbsp;&nbsp;exact Nat.gcd_pos_left m (by decide)</code><br><br>
+      <code>contradiction</code>
+    </td>
+  </tr>
+</table>
+
+
 ## Expressive
 
-Litex built in all common conceptions of math such as set, proposition and others instead of make conceptions implemented via computer language.
-
-Here is an example: to define a group, and prove R and Z are groups
+Mathematics studies abstraction. It is about finding the most general and abstract patterns in the world. Litex is very good at expressing such patterns. Here is an example: to define a group, and prove R and Z are groups.
 
 ```litex
 prop is_group(s set, mul fn(s, s)s, inv fn(s)s, e s):
@@ -182,5 +242,54 @@ forall x Z:
 $is_group(R, +, inverse, 0)
 $is_group(Z, +, inverse, 0)
 ```
+
+By contrast, here is the same example in Lean.
+
+<table style="border-collapse: collapse; width: 100%; font-size: 12px;">
+  <tr>
+    <th style="border: 2px solid black; padding: 4px; text-align: left; width: 50%;">Litex</th>
+    <th style="border: 2px solid black; padding: 4px; text-align: left; width: 50%;">Lean 4</th>
+  </tr>
+  <tr>
+    <td style="border: 2px solid black; padding: 2px; line-height: 1.5">
+      <code>prop is_group(s set, mul fn(s, s)s, inv fn(s)s, e s):</code><br>
+      <code>&nbsp;&nbsp;forall x s, y s, z s:</code><br>
+      <code>&nbsp;&nbsp;mul(mul(x, y), z) = mul(x, mul(y, z))</code><br>
+      <code>&nbsp;&nbsp;forall x s:</code><br>
+      <code>&nbsp;&nbsp;mul(x, inv(x)) = e</code><br>
+      <code>&nbsp;&nbsp;mul(inv(x), x) = e</code><br><br>
+      <code>fn inverse(x R)R:</code><br>
+      <code>&nbsp;&nbsp;inverse(x) + x = 0</code><br><br>
+      <code>forall x R:</code><br>
+      <code>&nbsp;&nbsp;inverse(x) $in R</code><br>
+      <code>&nbsp;&nbsp;x + inverse(x) = inverse(x) + x</code><br>
+      <code>&nbsp;&nbsp;inverse(x) + x = 0</code><br>
+      <code>&nbsp;&nbsp;x + inverse(x) = 0</code><br><br>
+      <code>$is_group(R, +, inverse, 0)</code><br>
+      <code>$is_group(Z, +, inverse, 0)</code>
+    </td>
+    <td style="border: 2px solid black; padding: 2px; line-height: 1.5">
+      <code>structure MyGroup (G : Type) where</code><br>
+      <code>&nbsp;&nbsp;add : G → G → G</code><br>
+      <code>&nbsp;&nbsp;zero : G</code><br>
+      <code>&nbsp;&nbsp;neg : G → G</code><br>
+      <code>&nbsp;&nbsp;add_assoc : ∀ a b c : G, add (add a b) c = add a (add b c)</code><br>
+      <code>&nbsp;&nbsp;zero_add : ∀ a : G, add zero a = a</code><br>
+      <code>&nbsp;&nbsp;add_zero : ∀ a : G, add a zero = a</code><br>
+      <code>&nbsp;&nbsp;add_left_neg : ∀ a : G, add (neg a) a = zero</code><br><br>
+      <code>def intAddGroup : MyGroup Int where</code><br>
+      <code>&nbsp;&nbsp;add := Int.add</code><br>
+      <code>&nbsp;&nbsp;zero := 0</code><br>
+      <code>&nbsp;&nbsp;neg := Int.neg</code><br>
+      <code>&nbsp;&nbsp;add_assoc := by intros; apply Int.add_assoc</code><br>
+      <code>&nbsp;&nbsp;zero_add := by intros; apply Int.zero_add</code><br>
+      <code>&nbsp;&nbsp;add_zero := by intros; apply Int.add_zero</code><br>
+      <code>&nbsp;&nbsp;add_left_neg := by intros; apply Int.neg_add_self</code><br><br>
+      <code>-- R is not builtin in Lean, the user has to define it himself or rely on the library. We skip it.</code><br>
+    </td>
+  </tr>
+</table>
+
+
 
 [^1]: [Computer programming as an art](https://dl.acm.org/doi/10.1145/1283920.1283929)
