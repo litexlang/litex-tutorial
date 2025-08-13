@@ -15,9 +15,64 @@ forall => 1 + 1 = 2 <=> 1 + 1 = 2
 forall x R => x $in R
 forall x R => x > 0 <=> x > 0
 forall x R: x > 0 => x > 0 <=> x > 0
-forall x R: forall x R: x > 0 => x > 0 <=> x > 0; x > 0 => x > 0
-forall x R: forall x R: x > 0 => x > 0 <=> x > 0; x > 0 => x > 0
-forall x R: forall x R: x > 0 => x > 0 <=> x > 0; x > 0 => forall x R: x > 0 => x > 0 <=> x > 0; x > 0
+forall x R: forall y R: y > 0 => y > 0 <=> y > 0; x > 0 => x > 0
+forall x R: forall y R: y > 0 => y > 0 <=> y > 0; x > 0 => forall y R: y > 0 => y > 0 <=> x > 0
+forall x R: forall x R: x > 0 => x > 0; 1 > 0, forall x R: x > 0 => x > 0; => 1 > 0, forall x R: x > 0 => x > 0; 1 > 0
+```
+
+```litex
+forall:
+    1 + 1 = 2
+
+forall:
+    1 > 0
+    then:
+        1 > 0
+
+forall:
+    then:
+        1 + 1 = 2
+    iff:
+        1 + 1 = 2
+
+forall x R:
+    x $in R
+
+forall x R:
+    then:
+        x > 0
+    iff:
+        x > 0
+
+forall x R:
+    forall y R:
+        dom:
+            x > 0
+        then:
+            x > 0
+        iff:
+            x > 0
+    x > 0
+    then:
+        x > 0
+
+forall x R:
+    forall y R:
+        dom:
+            y > 0
+        then:
+            y > 0
+        iff:
+            y > 0
+    x > 0
+    then:
+        forall y R:
+            dom:
+                y> 0
+            then:
+                y > 0
+            iff:
+                y > 0
 ```
 
 ## Function Declaration
@@ -52,6 +107,8 @@ fn k(x N) N:
 
 ## Proposition Declaration
 
+The followings are inline version of proposition declaration. The equivalent multiple lines version is below.
+
 ```litex
 prop q(x R) <=> x > 0
 prop p(x , y R): x > 0, y > 0 <=> x + y > 0
@@ -69,5 +126,7 @@ prop p(x , y R):
 ```
 
 ## Inline Multiple Factual Statements
+
+
 
 ## Claim
