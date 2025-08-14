@@ -217,7 +217,7 @@ Most Litex statements can be written in inline format. Here are some examples:
 ```litex
 let x, y R: x > y
 let x_multi_lines, y_multi_lines R:
-    x > y
+    x_multi_lines > y_multi_lines
 
 claim:
     1 > 0
@@ -255,5 +255,14 @@ claim:
 claim 1 > 0 prove_by_contradiction:
     1 > 0
 
+exist_prop x R st exist_R_larger_than_any_positive_number_multi_lines(y R):
+    y > 0
+    iff:
+        x > y
 
+exist_prop x R st exist_R_larger_than_any_positive_number(y R): y > 0 <=> x > y
+
+prop p(x R)
+
+know $p(1), $p(2), $p(3)
 ```
