@@ -1,23 +1,23 @@
 # Not
 
-Not means the negation of a statement or [Proposition](https://litexlang.org/doc/Turorial/Proposition). You can use it like:
+Any specific fact can be negated by `not`. You can not write `not forall` in Litex. When you want to negate a universal fact, You must declare a `exist_prop` first and try to prove the existence of such an item that leads to `not forall`.
+
+The following example shows how to negate a specific fact:
 
 ```litex
-let x R:
-    x > 5
+let x R: x > 5
 
 not x <= 5
 ```
 
-```litex
-prop form_triangles(x, y, z R):
-    x > 0
-    y > 0
-    z > 0
-    iff:
-        x + y > z
-        x + z > y
-        y + z > x
+To prove the negation of a specific fact, you can use `prove_by_contradiction` in `claim` block. For example:
 
-not $form_triangles(1, 2, 3)
+```litex
+prop p(x R)
+prop q(x R)
+know forall x R: $p(x) => $q(x); not $q(1)
+claim:
+    not $p(1)
+    prove_by_contradiction:
+        $q(1) # is true, because $p(1) is assumed to be true
 ```
