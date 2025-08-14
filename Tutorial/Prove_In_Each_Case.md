@@ -2,18 +2,18 @@
 
 If `or(fact1, fact2, ..., factN)` is true, `then_fact` is true in each case, then `then_fact` is always true. Litex uses `prove_in_each_case` to prove this kind of fact:
 
-```litex
+```
 prove_in_each_case:
     or(fact1, fact2, ..., factN)
     then:
         then_fact
     prove:
-        // assume fact1 is true, prove then_fact
+        # assume fact1 is true, prove then_fact
     prove:
-        // assume fact2 is true, prove then_fact
+        # assume fact2 is true, prove then_fact
     ...
     prove:
-        // assume factN is true, prove then_fact
+        # assume factN is true, prove then_fact
 ```
 
 For example:
