@@ -17,11 +17,11 @@ brew install litexlang/tap/litex
 For Ubuntu/Debian users, please paste following command to your terminal:
 
 ```bash
-wget https://github.com/litexlang/golitex/releases/download/0.1.8-beta/litex_0.1.8-beta_amd64.deb
-sudo dpkg -i litex_0.1.8-beta_amd64.deb
+wget https://github.com/litexlang/golitex/releases/download/0.1.10-beta/litex_0.1.10-beta_amd64.deb
+sudo dpkg -i litex_0.1.10-beta_amd64.deb
 ```
 
-For Windows users, please download MSI file form [**HERE**](https://github.com/litexlang/golitex/releases/download/0.1.8-beta/litex_0.1.8-beta_amd64.msi)
+For Windows users, please download MSI file form [**HERE**](https://github.com/litexlang/golitex/releases/download/0.1.10-beta/litex_0.1.10-beta_amd64.msi)
 
 ## Try Litex on your machine
 
