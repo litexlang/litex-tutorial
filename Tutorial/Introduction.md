@@ -225,6 +225,9 @@ prop is_group(s set, mul fn(s, s)s, inv fn(s)s, e s):
     forall x s:
         mul(x, inv(x)) = e
         mul(inv(x), x) = e
+    forall x s:
+        mul(x, e) = x
+        mul(e, x) = x
 
 fn inverse(x R)R:
     inverse(x) + x = 0
@@ -254,10 +257,13 @@ By contrast, here is the same example in Lean.
     <td style="border: 2px solid black; padding: 2px; line-height: 1.5">
       <code>prop is_group(s set, mul fn(s, s)s, inv fn(s)s, e s):</code><br>
       <code>&nbsp;&nbsp;forall x s, y s, z s:</code><br>
-      <code>&nbsp;&nbsp;mul(mul(x, y), z) = mul(x, mul(y, z))</code><br>
+      <code>&nbsp;&nbsp;&nbsp;mul(mul(x, y), z) = mul(x, mul(y, z))</code><br>
       <code>&nbsp;&nbsp;forall x s:</code><br>
-      <code>&nbsp;&nbsp;mul(x, inv(x)) = e</code><br>
-      <code>&nbsp;&nbsp;mul(inv(x), x) = e</code><br><br>
+      <code>&nbsp;&nbsp;&nbsp;mul(x, inv(x)) = e</code><br>
+      <code>&nbsp;&nbsp;&nbsp;mul(inv(x), x) = e</code><br>
+      <code>&nbsp;&nbsp;forall x s:</code><br>
+      <code>&nbsp;&nbsp;&nbsp;mul(x, e) = x</code><br>
+      <code>&nbsp;&nbsp;&nbsp;mul(e, x) = x</code><br><br>
       <code>fn inverse(x R)R:</code><br>
       <code>&nbsp;&nbsp;inverse(x) + x = 0</code><br><br>
       <code>forall x R:</code><br>
