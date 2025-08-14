@@ -6,9 +6,9 @@ However, in daily writing, people are accustomed to writing statements in a sing
 
 ## Forall
 
-Inline forall statement ends with `;` to separate itself from the next statement. When the whole line ends with that forall statement, the `;` is optional. When `forall` is inside another statement, the `;` is required.
+Inline forall statement ends with `;` to separate itself from the next statement. When the whole line ends with that forall statement, the `;` is optional. When `forall` is inside another statement, the `;` is required. As you can see, inline version saves a lot of lines.
 
-Equivalent multiple lines version:
+The `then` keyword is replaced by `=>` and `iff` is replaced by `<=>`. Domain Facts follow the `:` symbol. When you are writing inline `forall`, all facts that appear in the `forall` fact must also be written in inline format. When there is no extra domain facts, you can hide the `:` symbol and write `=>` directly.
 
 ```litex
 forall => 1 + 1 = 2
@@ -103,32 +103,46 @@ forall x R:
 
 ## Function Declaration
 
-``` litex
-fn f(x R) R: x > 0 => f(x) > 0
-fn h(x N) N: forall y N_pos: x < y
-fn g(x R) R => g(x) > 0
-fn k(x N) N: forall y N_pos: x < y => f(x) = 0
-```
+`fn` can also be written in inline format. The `then` keyword is replaced by `=>`.
 
 ```litex
-fn f(x R) R:
+fn f(x R) R: x > 0 => f(x) > 0
+fn f_multi_lines(x R) R:
     x > 0
     then:
-        f(x) > 0
+        f_multi_lines(x) > 0
 
-fn h(x N) N:
+fn h(x N) N: forall y N_pos: x < y
+fn h_multi_lines(x N) N:
     dom:
         forall y N_pos:
             x < y
 
-fn g(x R) R:
-    g(x) > 0
+fn g(x R) R => g(x) > 0
+fn g_multi_lines(x R) R:
+    g_multi_lines(x) > 0
 
-fn k(x N) N:
+fn k(x N) N: forall y N_pos: x < y => k(x) = 0
+fn k_multi_lines(x N) N:
+    dom:
+        forall y N_pos:
+            x < y
+            then:
+                k_multi_lines(x) = 0
+
+fn t(x N) N: forall y N_pos: x < y => t(x) = 0; 1 > 0, forall y N_pos: x < y => t(x) = 0; => t(1) = 0
+fn t_multi_lines(x N) N:
     forall y N_pos:
         x < y
+        then:
+            t_multi_lines(x) = 0
+    1 > 0
+    forall y N_pos:
+        x < y
+        then:
+            t_multi_lines(x) = 0
     then:
-        f(x) = 0
+        t_multi_lines(1) = 0
 ```
 
 ## Proposition Declaration
@@ -137,18 +151,25 @@ The followings are inline version of proposition declaration. The equivalent mul
 
 ```litex
 prop q(x R) <=> x > 0
-prop p(x , y R): x > 0, y > 0 <=> x + y > 0
-```
-
-```litex
-prop q(x R):
+prop q_multi_lines(x R):
     x > 0
 
-prop p(x , y R):
+prop p(x , y R): x > 0, y > 0 <=> x + y > 0
+prop p_multi_lines(x , y R):
     x > 0
     y > 0
     iff:
         x + y > 0
+
+prop t(x R): x > 0, y > 0, forall y R => y $in R; 1 > 0 <=> 1 > 0
+prop t_multi_lines(x R):
+    x > 0
+    y > 0
+    forall y R:
+        y $in R
+    1 > 0
+    iff:
+    	1 > 0
 ```
 
 ## Inline Multiple Factual Statements
