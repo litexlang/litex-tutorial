@@ -97,9 +97,4 @@ claim:
         0 = 1
 ```
 
-## Proof in Each Case
-
-`prove_in_each_case` should always be used with `or` together:
-
-<!-- TODO Provide a Litex-acceptable example -->
 

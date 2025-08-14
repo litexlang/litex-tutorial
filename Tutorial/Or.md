@@ -26,3 +26,5 @@ a = 2
 ```litex
 know forall x R: or(x = 1, x = 2) => x < 3
 ```
+
+`or` is often used with `prove_in_each_case` to prove a fact in each case, read "prove_in_each_case" section for more details.
