@@ -1,6 +1,6 @@
 # Litex: Scale Formal Reasoning in AI Age
 
-**Release 0.1.9-beta (not yet ready for production use)**  
+**Release 0.1.10-beta (not yet ready for production use)**  
 _Jiachen Shen and The Litex Team_
 **Try Litex on [playground](https://litexlang.org/playground).**
 
