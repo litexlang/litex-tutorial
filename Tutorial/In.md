@@ -24,4 +24,12 @@ forall x N:
 fn f(x N) N
 ```
 
-`x N` in `fn f(x N) N` means the parameter `x` that is passed to `f` is must satisfy `x $in N`, i.e. The domain of the first parameter `x` must be in the domain of `N`.
+`x N` in `fn f(x N) N` means the parameter `x` that is passed to `f` is must satisfy `x $in N`, i.e. The domain of the first parameter `x` is subset of `N`.
+
+```litex
+prop p(x N)
+```
+
+`x N` in `prop p(x N)` means the parameter `x` that is passed to `p` is must satisfy `x $in N`, i.e. The domain of the first parameter `x` is subset of `N`.
+
+As you can see, `in` is everywhere, in explicit and implicit ways.
