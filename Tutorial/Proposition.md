@@ -28,6 +28,20 @@ prop propName(parameter1 set1, parameter2 set2, ...):
         ...
 ```
 
+Or you can write `dom` in the first line:
+
+```
+prop propName(parameter1 set1, parameter2 set2, ...):
+    dom:
+        domFact1
+        domFact2
+        ...
+    <=>:
+        iffFact1
+        iffFact2
+        ...
+```
+
 It reads: propName takes parameter1 in set1, parameter2 in set2, ..., and parameters must satisfy domFact1, domFact2, ..., . When the requirements of parameters are satisfied, $propName(parameter1, parameter2, ...) is true if and only if iffFact1, iffFact2, ... are all true.
 
 When there is no domain facts, you can hide `<=>`:
@@ -50,12 +64,24 @@ For example, we declare a proposition `p`, and after lines of code we set equiva
 ```litex
 prop sum_larger_than_0(x, y R)
 
-# ... lines code code
+# ... lines of code
 
-know forall x, y R: $sum_larger_than_0(x, y) <=> x + y > 0
+know forall x, y R => $sum_larger_than_0(x, y) <=> x + y > 0
 ```
 
+Also, you can specify the domain of a proposition at declaration time without specifying its equivalent definition. Later, you can add the equivalent definition.
 
+```litex
+prop can_form_a_triangle(x, y, z R):
+    dom:
+        x > 0
+        y > 0
+        z > 0
+
+# ... lines of code
+
+know forall x, y, z R: x > 0, y > 0, z > 0 => $can_form_a_triangle(x, y, z) <=> x + y > z, x + z > y, y + z > x
+```
 
 When we know or proved a fact is true, Litex automatically know all the equivalent facts are true. For example:
 
