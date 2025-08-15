@@ -13,7 +13,49 @@ $intelligent(Jordan)
 
 `intelligent` is a proposition. `$intelligent(Jordan)` is a factual statement.
 
-In `1 > 0`, `1 > 0` is a factual statement, `>` is a proposition. A factual statement can be true or false, but not both. Factual statement `1 > 0` is true. Factual statement `0 > 1` is false.
+Another example is: In `1 > 0`, `1 > 0` is a factual statement, `>` is a proposition. A factual statement can be true or false, but not both. Factual statement `1 > 0` is true. Factual statement `0 > 1` is false.
+
+The complete definition of a proposition is:
+
+```
+prop propName(parameter1 set1, parameter2 set2, ...):
+    domFact1
+    domFact2
+    ...
+    <=>:
+        iffFact1
+        iffFact2
+        ...
+```
+
+It reads: propName takes parameter1 in set1, parameter2 in set2, ..., and parameters must satisfy domFact1, domFact2, ..., . When the requirements of parameters are satisfied, $propName(parameter1, parameter2, ...) is true if and only if iffFact1, iffFact2, ... are all true.
+
+When there is no domain facts, you can hide `<=>`:
+
+```
+prop propName(parameter1 set1, parameter2 set2, ...):
+    iffFact1
+    iffFact2
+    ...
+```
+
+Sometimes we just want to declare a proposition without specifying what facts it is equivalent to. You can write
+
+```
+prop propName(parameter1 set1, parameter2 set2, ...)
+```
+
+For example, we declare a proposition `p`, and after lines of code we set equivalent facts for it.
+
+```litex
+prop sum_larger_than_0(x, y R)
+
+# ... lines code code
+
+know forall x, y R: $sum_larger_than_0(x, y) <=> x + y > 0
+```
+
+
 
 When we know or proved a fact is true, Litex automatically know all the equivalent facts are true. For example:
 
@@ -31,13 +73,10 @@ we would not be able to directly prove `a < c` in some situations—because we m
 
 By assigning a name to a `forall` statement and verifying it through that proposition name, Litex can then automatically conclude all equivalent facts, ensuring that results like `a < c` are immediately known.
 
-
-## Claim a Proposition
-
-You can claim a Proposition `form_triangles`(`x`, `y`, `z` in `R` and `x > 0`, `y > 0`, `z > 0` is able to form triangles if and only if the sum of any two is greater than the third one):
+Another example is about the triangle inequality:
 
 ```litex
-prop form_triangles(x, y, z R):
+prop can_form_a_triangle(x, y, z R):
     dom:
         x > 0
         y > 0
@@ -48,42 +87,18 @@ prop form_triangles(x, y, z R):
         y + z > x
 ```
 
-`prop` is the reserved word of Proposition. `dom` is the additional restrictions for those Objects. `iff` means the part *if and only if* in a Proposition. So you should write the logic after *if and only if* in `iff`.
-
-Just like you add additional restriction on `forall`, you use `dom`! And as it should be, `dom` here could be hidden here as well:
-
-```litex
-prop form_triangles(x, y, z R):
-    x > 0
-    y > 0
-    z > 0
-    <=>:
-        x + y > z
-        x + z > y
-        y + z > x
-```
-
-You should have thought of it as well, If you claim `x`, `y`, `z` in `N_pos`, you could hide the `then` because there is no `dom`:
-
-```litex
-prop form_triangles(x, y, z N_pos):
-    x + y > z
-    x + z > y
-    y + z > x
-```
-
 ## Claim an empty Proposition
 
 Also, you can claim a Proposition without any logic but only a name like the following line, which means `x`, `y`, `z` in `N_pos` is able to form triangles in any situation. Obviously, this proposition is false with the knowledge we have. But you can still claim it anyway.
 
 ```litex
-prop form_triangles(x, y, z N_pos)
+prop can_form_a_triangle(x, y, z N_pos)
 ```
 
-Absolutly, you can claim a Proposition with only additional restrictions and no logic like the following lines, which express the similar meaning like the above line:
+Absolutely, you can claim a Proposition with only additional restrictions and no logic like the following lines, which express the similar meaning like the above line:
 
 ```litex
-prop form_triangles(x, y, z R):
+prop can_form_a_triangle(x, y, z R):
     dom:
         x > 0
         y > 0
@@ -97,7 +112,7 @@ prop form_triangles(x, y, z R):
 After claiming a Proposition, you could call it anywhere with a prepend `$`:
 
 ```litex
-prop form_triangles(x, y, z R):
+prop can_form_a_triangle(x, y, z R):
     x > 0
     y > 0
     z > 0
@@ -106,7 +121,7 @@ prop form_triangles(x, y, z R):
         x + z > y
         y + z > x
 
-$form_triangles(3, 4, 5)
+$can_form_a_triangle(3, 4, 5)
 ```
 
 If there is only two Objects in parentheses of Proposition claim, you could also call it like:
@@ -122,23 +137,23 @@ prop divisible_by(n, m R):
 
 ## Make a Proposition always True
 
-Litex could judge if a Propsition is true of false when user call it. But for the empty Propostion, there is no logic for Litex to judge. You have to make it always true via `know`. Just now, we claimed an empty Proposition `form_triangles`. Litex consider it unknown because we don't give it *if and only if* part:
+Litex could judge if a Propsition is true of false when user call it. But for the empty Propostion, there is no logic for Litex to judge. You have to make it always true via `know`. Just now, we claimed an empty Proposition `can_form_a_triangle`. Litex consider it unknown because we don't give it *if and only if* part:
 
 ```litex
-prop form_triangles(x, y, z N_pos)
+prop can_form_a_triangle(x, y, z N_pos)
 
-$form_triangles(1, 2, 3)
+$can_form_a_triangle(1, 2, 3)
 ```
 
 Sometimes, you may want to continue your logic without a specific claim to a Proposition, you can make Litex to consider an empty Proposition true temporarily:
 
 ```litex
-prop form_triangles(x, y, z N_pos)
+prop can_form_a_triangle(x, y, z N_pos)
 
 know forall m, n, l N_pos:
-    $form_triangles(m, n, l)
+    $can_form_a_triangle(m, n, l)
 
-$form_triangles(1, 2, 3)
+$can_form_a_triangle(1, 2, 3)
 ```
 
 > Note: Remember to fill the Proposition later. Or your logic looks specious.
