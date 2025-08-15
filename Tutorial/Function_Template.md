@@ -33,7 +33,7 @@ fn_template finite_positive_sequence_with_at_least_10_items(length N_pos):
     length >= 10
     fn (n N_pos) R:
         n <= length
-        then:
+        =>:
             finite_positive_sequence(n) > 0
 
 let f finite_positive_sequence_with_at_least_10_items(12)
@@ -44,7 +44,7 @@ The `f` here is equivalent to `f` defined here.
 ```litex
 fn f(n N_pos) R:
     n <= 12
-    then:
+    =>:
         f(n) > 0
 ```
 
