@@ -1,6 +1,19 @@
 # Proposition
 
-Same as the definition in math, Proposition is a sentence that is either true or false, but not both.
+A proposition is something that can be true or false — it’s a general statement form, often involving variables or placeholders. A factual statement is a proposition with all variables replaced by concrete values (or otherwise fully specified) so that its truth value is determined in a given context.
+
+For example
+
+```litex
+let human set, Jordan human
+prop intelligent(x Human)
+know forall x Human => $intelligent(x)
+$intelligent(Jordan)
+```
+
+`intelligent` is a proposition. `$intelligent(Jordan)` is a factual statement.
+
+In `1 > 0`, `1 > 0` is a factual statement, `>` is a proposition. A factual statement can be true or false, but not both. Factual statement `1 > 0` is true. Factual statement `0 > 1` is false.
 
 ## Claim a Proposition
 
