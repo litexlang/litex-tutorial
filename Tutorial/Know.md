@@ -61,7 +61,7 @@ let n N_pos: n > 10
 You can also claim a proposition and bind properties to it using `know`.
 
 ```litex
-prop n_larger_than_10(n N_pos)
+prop n_larger_than_10(n N_pos) # declare a proposition
 know forall n N_pos: n > 10 <=> $n_larger_than_10(n)
 ```
 
@@ -70,4 +70,19 @@ It is equivalent to the following code:
 ```litex
 prop n_larger_than_10(n N_pos):
 	n > 10
+```
+
+Sometimes you just want to assume a fact without checking. For example, axioms are always true. You can use `know` to assume them.
+
+For example, 0 is by axiom the smallest natural number.
+
+```litex
+know forall x N => x >= 0
+```
+
+Sometimes we want to use a fact without proving it. We can just use `know` to assume it. Be careful when you do so! It is very easy to introduce wrong facts.
+
+```litex
+prop fermat_last_theorem(x, y, z, n N_pos): n >= 3 <=> x^n + y^n = z^n
+know forall x, y, z Z, n N_pos: n >= 3 => $fermat_last_theorem(x, y, z, n)
 ```
