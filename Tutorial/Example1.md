@@ -30,3 +30,6 @@ $transitivity_of_less(a, b, c)
 a < c
 ```
 
+When `$transitivity_of_less(a, b, c)` is true, Litex automatically infers all facts that are logically equivalent to it.
+
+In this example, `$transitivity_of_less_operator(x, y, z)` states that `x < z` is equivalent to `x < y` and `y < z` being true. By substituting `x = a`, `y = b`, and `z = c`, we obtain `a < c`. Since Litex knows these two statements are equivalent, `a < c` is automatically established.

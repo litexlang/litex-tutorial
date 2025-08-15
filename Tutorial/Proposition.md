@@ -17,21 +17,20 @@ In `1 > 0`, `1 > 0` is a factual statement, `>` is a proposition. A factual stat
 
 When we know or proved a fact is true, Litex automatically know all the equivalent facts are true. For example:
 
+When `$transitivity_of_less(a, b, c)` is true, Litex automatically infers all facts that are logically equivalent to it.
+
+In this example, `$transitivity_of_less_operator(x, y, z)` states that `x < z` is equivalent to `x < y` and `y < z` being true. By substituting `x = a`, `y = b`, and `z = c`, we obtain `a < c`. Since Litex knows these two statements are equivalent, `a < c` is automatically established.
+
+This automatic derivation of equivalent facts is an essential feature of Litex. Without it, even if we had a statement like
+
 ```litex
-prop transitivity_of_less_operator(x, y, z R):
-    x < y
-    y < z
-    <=>:
-        x < z
-
-know forall a, b, c R: a < b, b < c => $transitivity_of_less(a, b, c)
-
-let a, b, c R: a < b, b < c
-$transitivity_of_less(a, b, c)
-a < c
+forall a, b, c R: a < b, b < c => a < c
 ```
 
-When `$transitivity_of_less(a, b, c)` is true. Since Litex automatically know all the equivalent facts are true. In this case, `$transitivity_of_less_operator(x, y, z)` is equivalent to `x < z` when `x < y` and `y < z` are true. We replace `x` with `a`, `y` with `b`, `z` with `c` in `$transitivity_of_less_operator(x, y, z)` and get `$transitivity_of_less_operator(a, b, c)`. So `x < z` is substituted with `a < c`.
+we would not be able to directly prove `a < c` in some situations—because we might not know which specific `b` is being used to satisfy the universal statement.
+
+By assigning a name to a `forall` statement and verifying it through that proposition name, Litex can then automatically conclude all equivalent facts, ensuring that results like `a < c` are immediately known.
+
 
 ## Claim a Proposition
 
