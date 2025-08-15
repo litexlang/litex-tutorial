@@ -15,6 +15,24 @@ $intelligent(Jordan)
 
 In `1 > 0`, `1 > 0` is a factual statement, `>` is a proposition. A factual statement can be true or false, but not both. Factual statement `1 > 0` is true. Factual statement `0 > 1` is false.
 
+When we know or proved a fact is true, Litex automatically know all the equivalent facts are true. For example:
+
+```litex
+prop transitivity_of_less_operator(x, y, z R):
+    x < y
+    y < z
+    <=>:
+        x < z
+
+know forall a, b, c R: a < b, b < c => $transitivity_of_less(a, b, c)
+
+let a, b, c R: a < b, b < c
+$transitivity_of_less(a, b, c)
+a < c
+```
+
+When `$transitivity_of_less(a, b, c)` is true. Since Litex automatically know all the equivalent facts are true. In this case, `$transitivity_of_less_operator(x, y, z)` is equivalent to `x < z` when `x < y` and `y < z` are true. We replace `x` with `a`, `y` with `b`, `z` with `c` in `$transitivity_of_less_operator(x, y, z)` and get `$transitivity_of_less_operator(a, b, c)`. So `x < z` is substituted with `a < c`.
+
 ## Claim a Proposition
 
 You can claim a Proposition `form_triangles`(`x`, `y`, `z` in `R` and `x > 0`, `y > 0`, `z > 0` is able to form triangles if and only if the sum of any two is greater than the third one):

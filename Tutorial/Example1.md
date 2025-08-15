@@ -21,7 +21,7 @@ prop transitivity_of_less(a, b, c R):
     a < b
     b < c
     <=>:
-        b < c
+        a < c
 
 know forall a, b, c R: a < b, b < c => $transitivity_of_less(a, b, c)
 
