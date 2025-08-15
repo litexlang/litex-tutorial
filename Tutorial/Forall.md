@@ -14,12 +14,7 @@ forall x N_pos:
 What should be like if we meet more complex situation like this fact: for all `x`, `y` in `R`, if `x > 0`, `y > 0`, then `x + y > 0`. This fact includes additional restriction, which could be expressed by Litex like:
 
 ```litex
-forall x, y R:
-    dom:
-        x > 0
-        y > 0
-    =>:
-        x + y > 0
+know forall x, y R: x > 0, y > 0 => x + y > 0
 ```
 
 To make claim lines less, you could hide some reserved word for some situation. For example, you could hide `dom`:

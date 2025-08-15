@@ -8,8 +8,9 @@ A function template in Litex looks like this:
 
 ```
 fn_template T(template-parameter-parameter-set-pairs):
-    template_dom_fact_1
-    ...
+    dom:
+        template_dom_fact_1
+        ...
     fn (function-parameter-parameter-set-pairs) the_set_where_the_return_value_of_this_function_belongs_to:
         dom_fact_1
         dom_fact_2
@@ -28,9 +29,12 @@ You might be wondering, what does a function in a function template actually mea
 
 For example, we define the set of all finite positive sequences with at least 10 items. 
 
+<!-- TODO：有严重的bug，需要修复 -->
+
 ```litex
 fn_template finite_positive_sequence_with_at_least_10_items(length N_pos):
-    length >= 10
+    dom:
+        length >= 10
     fn (n N_pos) R:
         n <= length
         =>:
@@ -49,4 +53,3 @@ fn f(n N_pos) R:
 ```
 
 When there is no further template parameter requirements, you can hide the template parameter set pairs. For example:
-
