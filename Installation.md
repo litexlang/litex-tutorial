@@ -14,6 +14,12 @@ We recommend macOS users to install Litex by Homebrew with following command:
 brew install litexlang/tap/litex
 ```
 
+For upgrading Litex, please use following command:
+
+```bash
+brew upgrade
+```
+
 For Ubuntu/Debian users, please paste following command to your terminal:
 
 ```bash

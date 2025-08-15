@@ -21,12 +21,12 @@ forall:
 forall : 1 > 0 => 1 > 0
 forall:
     1 > 0
-    then:
+    =>:
         1 > 0
 
 forall => 1 + 1 = 2 <=> 1 + 1 = 2
 forall:
-    then:
+    =>:
         1 + 1 = 2
     iff:
         1 + 1 = 2
@@ -37,7 +37,7 @@ forall x R:
 
 forall x R => x > 0 <=> x > 0
 forall x R:
-    then:
+    =>:
         x > 0
     iff:
         x > 0
@@ -45,7 +45,7 @@ forall x R:
 forall x R: x > 0 => x > 0 <=> x > 0
 forall x R:
     x > 0
-    then:
+    =>:
         x > 0
     iff:
         x > 0
@@ -55,12 +55,12 @@ forall x R:
     forall y R:
         dom:
             y > 0
-        then:
+        =>:
             y > 0
         iff:
             y > 0
     x > 0
-    then:
+    =>:
         x > 0
 
 forall x R: forall y R: y > 0 => y > 0 <=> y > 0; x > 0 => forall y R: y > 0 => y > 0 <=> y > 0; x > 0
@@ -68,16 +68,16 @@ forall x R:
     forall y R:
         dom:
             y > 0
-        then:
+        =>:
             y > 0
         iff:
             y > 0
     x > 0
-    then:
+    =>:
         forall y R:
             dom:
                 y> 0
-            then:
+            =>:
                 y > 0
             iff:
                 y > 0
@@ -87,18 +87,18 @@ forall x R: forall y R: y > 0 => y > 0; 1 > 0, forall y R: y > 0 => y > 0; => 1 
 forall x R:
     forall y R:
         y > 0
-        then:
+        =>:
             y > 0
     1 > 0
     forall y R:
         y > 0
-        then:
+        =>:
             y > 0
-    then:
+    =>:
         1 > 0
         forall y R:
             y > 0
-            then:
+            =>:
                 y > 0
         1 > 0
 ```
@@ -130,7 +130,7 @@ or:
 fn f(x R) R: x > 0 => f(x) > 0
 fn f_multi_lines(x R) R:
     x > 0
-    then:
+    =>:
         f_multi_lines(x) > 0
 
 fn h(x N) N: forall y N_pos: x < y
@@ -148,21 +148,21 @@ fn k_multi_lines(x N) N:
     dom:
         forall y N_pos:
             x < y
-            then:
+            =>:
                 k_multi_lines(x) = 0
 
 fn t(x N) N: forall y N_pos: x < y => t(x) = 0; 1 > 0, forall y N_pos: x < y => t(x) = 0; => t(1) = 0
 fn t_multi_lines(x N) N:
     forall y N_pos:
         x < y
-        then:
+        =>:
             t_multi_lines(x) = 0
     1 > 0
     forall y N_pos:
         x < y
-        then:
+        =>:
             t_multi_lines(x) = 0
-    then:
+    =>:
         t_multi_lines(1) = 0
 ```
 
@@ -179,7 +179,7 @@ prop p(x , y R): x > 0, y > 0 <=> x + y > 0
 prop p_multi_lines(x , y R):
     x > 0
     y > 0
-    iff:
+    <=>:
         x + y > 0
 
 prop t(x R): x > 0, y > 0, forall y R => y $in R; 1 > 0 <=> 1 > 0
@@ -189,7 +189,7 @@ prop t_multi_lines(x R):
     forall y R:
         y $in R
     1 > 0
-    iff:
+    <=>:
     	1 > 0
 ```
 
@@ -235,7 +235,7 @@ claim 1 > 0 prove:
 claim:
     forall x R:
         x > 0
-        then:
+        =>:
         	x > 0
     prove:
         x > 0
@@ -257,7 +257,7 @@ claim 1 > 0 prove_by_contradiction:
 
 exist_prop x R st exist_R_larger_than_any_positive_number_multi_lines(y R):
     y > 0
-    iff:
+    <=>:
         x > y
 
 exist_prop x R st exist_R_larger_than_any_positive_number(y R): y > 0 <=> x > y

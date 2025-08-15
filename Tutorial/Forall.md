@@ -18,7 +18,7 @@ forall x, y R:
     dom:
         x > 0
         y > 0
-    then:
+    =>:
         x + y > 0
 ```
 
@@ -28,7 +28,7 @@ To make claim lines less, you could hide some reserved word for some situation. 
 forall x R:
     x > 0
     y > 0
-    then:
+    =>:
         x + y > 0
 ```
 
@@ -36,7 +36,7 @@ If you claim `x` in `N_pos` (the set of positive natural numbers) in the first l
 
 ```litex
 forall x N_pos:
-    then:
+    =>:
         x $in R
 ```
 
@@ -46,7 +46,7 @@ Sometimes, you may want to claim two **equivalent** facts caused by the same res
 forall x R:
     dom:
         x > 1
-    then:
+    =>:
         x <= 2
     iff:
         not x > 2
