@@ -11,16 +11,20 @@ forall x N_pos:
 
 It reads: for all x in N_pos (the set of all positive natural numbers), x is in N_pos (the set of all positive natural numbers). This is always true, since the assumption (for all x in N_pos) is always true is just the same as the conclusion (x is in N_pos).
 
-The syntax of forall is:
+The complete syntax of forall is:
 
 ```
 forall parameter1 set1, parameter2 set2, ...:
-    fact1
-    fact2
+    domFact1
+    domFact2
     ...
+    =>:
+        thenFact1
+        thenFact2
+        ...
 ```
 
-
+It reads: forall parameter1 in set1, parameter2 in set2, ..., with assumption domFact1, domFact2, ..., satisfied, then conclusion thenFact1, thenFact2, ... is true. (Understand assumption as the required domain facts for the parameters)
 
 `$in` here is a build-in Proposition for Litex users, which means the literal meaning *in*. You can also use it here like `$in(x, N_pos)` according to last chapter. So above lines claimed an obvious fact: for all `x` in `N_pos`, `x` in `N_pos`.
 
