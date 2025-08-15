@@ -25,6 +25,10 @@ The purpose of this slim tutorial is:
 
 Please don’t feel any pressure when reading this tutorial — Litex is truly very simple.
 
+Most of Litex’s expressions and keywords should already be familiar to you.
+
+However, I still hope you’ll pay attention to how this tutorial explains each keyword, because the things we think we know best are often the ones we understand the least — noticing those subtle details will help you learn and use Litex more effectively.
+
 The best way to learn Litex is to try writing the examples from the tutorial yourself, or translate the mathematics (or reasoning) you care about into Litex.
 
 ## Intuitive
@@ -118,7 +122,7 @@ know forall x, y, z N:
 
 know forall x N:
     x != 0
-    then:
+    =>:
         logBase(x, x) = 1
 
 claim:

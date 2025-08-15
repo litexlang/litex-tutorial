@@ -56,7 +56,7 @@ You can claim an Exist Proposition `larger_than`(For all `y` in `R` and `y > 0`,
 exist_prop x R st larger_than(y R):
     dom:
         y > 0
-    iff:
+    <=>:
         x > y
 ```
 `exist_prop` is the reserved word of Exist Proposition. `st` means *such that*. As you can see `exist_prop ... st ...` is a fixed match when you claim an Exist Proposition. 
@@ -66,7 +66,7 @@ Also, you can hide the `dom`:
 ```litex
 exist_prop x R st larger_than(y R):
     y > 0
-    iff:
+    <=>:
         x > y
 ```
 

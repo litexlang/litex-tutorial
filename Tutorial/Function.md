@@ -12,7 +12,7 @@ You can define a Function `square_root`(for all `x` in `R`, if `x` >= 0, then th
 fn square_root(x R) R:
     dom:
         x >= 0
-    then:
+    =>:
         square_root(x) * square_root(x) = x
 ```
 
@@ -30,7 +30,7 @@ Litex encourages you to write clean and short code. For example, you could hide 
 ```litex
 fn square_root(x R) R:
     x >= 0
-    then:
+    =>:
         square_root(x) * square_root(x) = x
 ```
 
@@ -70,7 +70,7 @@ Just like the way we use function in math, you can call a function by `functionN
 ```litex
 fn square_root(x R) R:
     x >= 0
-    then:
+    =>:
         square_root(x) * square_root(x) = x
 
 square_root(4) $in R

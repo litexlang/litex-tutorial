@@ -1,6 +1,19 @@
 # Proposition
 
-Same as the definition in math, Proposition is a sentence that is either true or false, but not both.
+A proposition is something that can be true or false — it’s a general statement form, often involving variables or placeholders. A factual statement is a proposition with all variables replaced by concrete values (or otherwise fully specified) so that its truth value is determined in a given context.
+
+For example
+
+```litex
+let human set, Jordan human
+prop intelligent(x Human)
+know forall x Human => $intelligent(x)
+$intelligent(Jordan)
+```
+
+`intelligent` is a proposition. `$intelligent(Jordan)` is a factual statement.
+
+In `1 > 0`, `1 > 0` is a factual statement, `>` is a proposition. A factual statement can be true or false, but not both. Factual statement `1 > 0` is true. Factual statement `0 > 1` is false.
 
 ## Claim a Proposition
 
@@ -12,7 +25,7 @@ prop form_triangles(x, y, z R):
         x > 0
         y > 0
         z > 0
-    iff:
+    <=>:
         x + y > z
         x + z > y
         y + z > x
@@ -27,7 +40,7 @@ prop form_triangles(x, y, z R):
     x > 0
     y > 0
     z > 0
-    iff:
+    <=>:
         x + y > z
         x + z > y
         y + z > x
@@ -71,7 +84,7 @@ prop form_triangles(x, y, z R):
     x > 0
     y > 0
     z > 0
-    iff:
+    <=>:
         x + y > z
         x + z > y
         y + z > x
@@ -84,7 +97,7 @@ If there is only two Objects in parentheses of Proposition claim, you could also
 ```litex
 prop divisible_by(n, m R):
     m != 0
-    iff:
+    <=>:
         n % m = 0
 
 6 $divisible_by 3
@@ -124,7 +137,7 @@ prop p(x , y R):
 
 know forall x, y R:
     $p(x , y)
-    then:
+    =>:
         x < 0
 
 let a, b R
@@ -138,7 +151,7 @@ In this case, Litex provides a short style for you to write via `@`:
 @p(x, y R):
     x < y
     y < 0
-    then:
+    =>:
         x < 0
 
 let a, b R
