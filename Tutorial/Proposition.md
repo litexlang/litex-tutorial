@@ -25,7 +25,7 @@ prop form_triangles(x, y, z R):
         x > 0
         y > 0
         z > 0
-    iff:
+    <=>:
         x + y > z
         x + z > y
         y + z > x
@@ -40,7 +40,7 @@ prop form_triangles(x, y, z R):
     x > 0
     y > 0
     z > 0
-    iff:
+    <=>:
         x + y > z
         x + z > y
         y + z > x
@@ -84,7 +84,7 @@ prop form_triangles(x, y, z R):
     x > 0
     y > 0
     z > 0
-    iff:
+    <=>:
         x + y > z
         x + z > y
         y + z > x
@@ -97,7 +97,7 @@ If there is only two Objects in parentheses of Proposition claim, you could also
 ```litex
 prop divisible_by(n, m R):
     m != 0
-    iff:
+    <=>:
         n % m = 0
 
 6 $divisible_by 3
@@ -137,7 +137,7 @@ prop p(x , y R):
 
 know forall x, y R:
     $p(x , y)
-    then:
+    =>:
         x < 0
 
 let a, b R
@@ -151,7 +151,7 @@ In this case, Litex provides a short style for you to write via `@`:
 @p(x, y R):
     x < y
     y < 0
-    then:
+    =>:
         x < 0
 
 let a, b R

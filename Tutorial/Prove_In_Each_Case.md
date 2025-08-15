@@ -5,7 +5,7 @@ If `or(fact1, fact2, ..., factN)` is true, `then_fact` is true in each case, the
 ```
 prove_in_each_case:
     or(fact1, fact2, ..., factN)
-    then:
+    =>:
         then_fact
     prove:
         # assume fact1 is true, prove then_fact
@@ -22,7 +22,7 @@ let x N: or(x = 1, x = 2)
 
 prove_in_each_case:
     or(x = 1, x = 2)
-    then:
+    =>:
         x > 0
     prove:
         1 > 0

@@ -38,7 +38,7 @@ know forall x, y, z N:
 
 know forall x N:
     x != 0
-    then:
+    =>:
         logBase(x, x) = 1
 
 claim:

@@ -36,7 +36,7 @@ You can use `claim` to make something affect part out of the Prove sub-environme
 claim:
     @p(x N):
         x > 1
-        then:
+        =>:
             x > -1
     prove:
         $larger_is_transitive(x, 1, -1)
