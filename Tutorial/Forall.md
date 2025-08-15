@@ -1,15 +1,28 @@
 # Forall
 
-Math is about deriving new facts from established ones. We can derive specific facts from general facts. 
+Mathematics is fundamentally about deducing new facts from previously established ones. In particular, general statements can be used to derive specific instances.
 
-*For all* is a common conception in math and even in real world. To express *for all* in Litex, we use `forall`:
+The concept of for all is ubiquitous in both mathematics and the real world. In Litex, universal quantification is expressed with the forall keyword. Here is an example:
 
 ```litex
 forall x N_pos:
-    x $in R
+    x $in N_pos
 ```
 
-`$in` here is a build-in Proposition for Litex users, which means the literal meaning *in*. You can also use it here like `$in(x, R)` according to last chapter. So above lines claimed an obvious fact: for all `x` in `N_pos`, `x` in `R`.
+It reads: for all x in N_pos (the set of all positive natural numbers), x is in N_pos (the set of all positive natural numbers). This is always true, since the assumption (for all x in N_pos) is always true is just the same as the conclusion (x is in N_pos).
+
+The syntax of forall is:
+
+```
+forall parameter1 set1, parameter2 set2, ...:
+    fact1
+    fact2
+    ...
+```
+
+
+
+`$in` here is a build-in Proposition for Litex users, which means the literal meaning *in*. You can also use it here like `$in(x, N_pos)` according to last chapter. So above lines claimed an obvious fact: for all `x` in `N_pos`, `x` in `N_pos`.
 
 What should be like if we meet more complex situation like this fact: for all `x`, `y` in `R`, if `x > 0`, `y > 0`, then `x + y > 0`. This fact includes additional restriction, which could be expressed by Litex like:
 
@@ -27,7 +40,7 @@ forall x R:
         x + y > 0
 ```
 
-If you claim `x` in `N_pos` (the set of positive natural numbers) in the first line, there is no `dom` anymore. Then, you could hide `iff`.So, starndard code of the example at the beginning of this chapter should be like:
+If you claim `x` in `N_pos` (the set of positive natural numbers) in the first line, there is no `dom` anymore. Then, you could hide `iff`.So, standard code of the example at the beginning of this chapter should be like:
 
 ```litex
 forall x N_pos:
